@@ -1,0 +1,75 @@
+# ----------------------
+# Python Ignored Files
+# ----------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment folders
+venv/
+.venv/
+env/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python eggs and distribution files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+
+# ----------------------
+# Node/JavaScript Ignored Files
+# ----------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# ----------------------
+# Environment / Credentials
+# ----------------------
+.env
+*.env
+
+# ----------------------
+# Logs
+# ----------------------
+*.log
+logs/
+*.log.*
+npm-debug.log*
+
+# ----------------------
+# macOS system files
+# ----------------------
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
+
+# ----------------------
+# Visual Studio Code
+# ----------------------
+.vscode/
+.history/
+
+# ----------------------
+# Additional OS / IDE
+# ----------------------
+Thumbs.db
+*.swp
+*.swo
+
+# ----------------------
+# By default, ignore coverage results
+# ----------------------
+coverage/
+coverage.json
+
+# Optionally ignore these:
+# coverage.lcov
