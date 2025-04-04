@@ -1,0 +1,732 @@
+number,state,title,body,created_at,updated_at,closed_at,merged_at,labels,user.login,created_dt,merged_dt,time_to_merge_hours
+32812,closed,[DevTools] Release and aquire host instances when they're cloned in persistent mode,"In persistent mode they can change when they're closned and so we need to release the old copy and acquire the new copy.
+",2025-04-03T13:26:30Z,2025-04-03T14:06:04Z,2025-04-03T14:06:04Z,2025-04-03T14:06:04Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-04-03 13:26:30+00:00,2025-04-03 14:06:04+00:00,0.6594444444444445
+32808,closed,Minor Tweak to Performance Track,"Rename ""Suspended"" commit to ""Suspended on CSS"" since that's the only reason for this particular branch. This will not hold true because with suspended images and with view transitions those can also be the reason. So in the future we need to add those.
+
+Only log ""Blocked"" in the components track if we yield for 3ms or longer. It's common to have like 1-2ms yield times for various reasons going on which is not worth the noise to consider ""blocking"".
+
+Rename ""Blocked"" to ""Update"" in the Blocking/Transition tracks. This is when a setState happens and with stack traces it's where you should look for the stack trace of the setState. So we want to indicate that this is the ""Update"".
+
+I only added the ""Blocked"" part if we're blocked for more than 5ms before we can start rendering - indicating that some other track was working at the same time and preventing us from rendering.",2025-04-02T18:31:06Z,2025-04-02T21:01:10Z,2025-04-02T21:01:10Z,2025-04-02T21:01:10Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-04-02 18:31:06+00:00,2025-04-02 21:01:10+00:00,2.5011111111111113
+32807,closed,Delete CHANGELOG-canary.md,"This is no longer being used or updated
+",2025-04-02T17:25:37Z,2025-04-02T20:05:46Z,2025-04-02T20:05:43Z,2025-04-02T20:05:43Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mattcarrollcode,2025-04-02 17:25:37+00:00,2025-04-02 20:05:43+00:00,2.6683333333333334
+32803,closed,Follow through all the phases when an error happens during snapshotting,"This can happen for example if you have duplicate names in the ""old"" state. This errors the transition before the updateCallback is invoked so we haven't yet applied mutations etc.
+
+This runs through those phases after the error to get us back to a consistent state.
+",2025-04-02T04:17:40Z,2025-04-02T14:49:45Z,2025-04-02T14:49:45Z,2025-04-02T14:49:45Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-04-02 04:17:40+00:00,2025-04-02 14:49:45+00:00,10.534722222222221
+32801,closed,Don't shadow EventListenerOptionsOrUseCapture and FocusOptions types,These are built-in to Flow.,2025-04-01T17:13:18Z,2025-04-01T18:22:58Z,2025-04-01T18:22:58Z,2025-04-01T18:22:58Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-04-01 17:13:18+00:00,2025-04-01 18:22:58+00:00,1.1611111111111112
+32800,closed,Clarify that the transitionLanes used by Transition Tracing is a LaneMap,"We have a high level concept for this used elsewhere.
+
+We should use this for `transitionTypes` too:
+
+https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js#L285
+
+As mentioned in #32797 we could also just use the `transitionLanes` since the `types` are also on the `Transition` objects. If we always stored this set.
+",2025-04-01T16:21:47Z,2025-04-01T22:18:33Z,2025-04-01T22:18:33Z,2025-04-01T22:18:33Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-04-01 16:21:47+00:00,2025-04-01 22:18:33+00:00,5.946111111111111
+32797,closed,Solidify addTransitionType Semantics,"Stacked on #32793.
+
+This is meant to model the intended semantics of `addTransitionType` better. The previous hack just consumed all transition types when any root committed so it could steal them from other roots. Really each root should get its own set. Really each transition lane should get its own set.
+
+We can't implement the full ideal semantics yet because 1) we currently entangle transition lanes 2) we lack `AsyncContext` on the client so for async actions we can't associate a `addTransitionType` call to a specific `startTransition`.
+
+This starts by modeling Transition Types to be stored on the Transition instance. Conceptually they belong to the Transition instance of that `startTransition` they belong to. That instance is otherwise mostly just used for Transition Tracing but it makes sense that those would be able to be passed the Transition Types for that specific instance.
+
+Nested `startTransition` need to get entangled. So that this `addTransitionType` can be associated with the `setState`:
+
+```js
+startTransition(() => {
+  startTransition(() => {
+    addTransitionType(...)
+  });
+  setState(...);
+});
+```
+
+Ideally we'd probably just use the same Transition instance itself since these are conceptually all part of one entangled one. But transition tracing uses multiple names and start times. Unclear what we want to do with that. So I kept separate instances but shared `types` set.
+
+Next I collect the types added during a `startTransition` to any root scheduled with a Transition. This should really be collected one set per Transition lane in a `LaneMap`. In fact, the information would already be there if Transition Tracing was always enabled because it tracks all Transition instances per lane. For now I just keep track of one set for all Transition lanes. Maybe we should only add it if a `setState` was done on this root in this particular `startTransition` call rather having already scheduled any Transition earlier.
+
+While async transitions are entangled, we don't know if there will be a startTransition+setState on a new root in the future. Therefore, we collect all transition types while this is happening and if a new root gets startTransition+setState they get added to that root. 
+
+```js
+startTransition(async () => {
+  addTransitionType(...)
+  await ...;
+  setState(...);
+});
+```",2025-04-01T03:49:14Z,2025-04-01T16:27:30Z,2025-04-01T16:11:19Z,2025-04-01T16:11:19Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-04-01 03:49:14+00:00,2025-04-01 16:11:19+00:00,12.368055555555555
+32795,closed,Remove v19 beta specific issue template,"This was a template for the 19 beta. Since 19 has been stable for a while now, we can clean this up. Any bug report for React 19 should use the standard bug report template.",2025-03-31T19:34:54Z,2025-03-31T19:53:20Z,2025-03-31T19:53:18Z,2025-03-31T19:53:18Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",jackpope,2025-03-31 19:34:54+00:00,2025-03-31 19:53:18+00:00,0.30666666666666664
+32793,closed,Warn if addTransitionType is called when there are no pending Actions,"Stacked on #32792.
+
+It's tricky to associate a specific `addTransitionType` call to a specific `startTransition` call because we don't have `AsyncContext` in browsers yet. However, we can keep track if there are any async transitions running at all, and if not, warn. This should cover most cases.
+
+This also errors when inside a React render which might be a legit way to associate a Transition Type to a specific render (e.g. based on props changing) but we want to be a more conservative about allowing that yet. If we wanted to support calling it in render, we might want to set which Transition object is currently rendering but it's still tricky if the render has `async function` components. So it might at least be restricted to sync components (like Hooks).",2025-03-30T18:44:27Z,2025-04-01T16:27:02Z,2025-04-01T16:10:10Z,2025-04-01T16:10:10Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-30 18:44:27+00:00,2025-04-01 16:10:10+00:00,45.42861111111111
+32792,closed,Support addTransitionType in startGestureTransition,"Stacked on #32788.
+
+Normally we track `addTransitionType` globally because of the async gap that can happen in Actions where we lack AsyncContext to associate it with a particular Transition. This unfortunately also means it's possible to call outside of `startTransition` which is something we want to warn for.
+
+We need to be able to distinguish whether `addTransitionType` is for a regular Transition or a Gesture Transition though.
+
+Since `startGestureTransition` is only synchronous we can track it within that execution scope and move it to a separate set. Since we know for sure which call owns it we can properly associate it with that specific provider's `ScheduledGesture`.
+
+This does not yet handle calling `addTransitionType` inside the render phase of a gesture. That would currently still be associated with the next Transition instead.",2025-03-30T17:52:46Z,2025-04-01T16:09:04Z,2025-04-01T16:08:56Z,2025-04-01T16:08:55Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-30 17:52:46+00:00,2025-04-01 16:08:55+00:00,46.26916666666666
+32790,closed,Adjust range start/end based on the duration and delay of the animation,"When different animations in a View Transition have different durations, we shouldn't stretch them out to run the full range of swipe. Because then they wouldn't line up the same way as when played using plain time.
+
+This adjusts the range start/end to be what it would've been when played by time. Except since we are playing animations in reverse, the animation-delay is actually applied from the range end and then the duration from there to get closer to the start.
+
+Reverse the range if the original animation was reversed.
+
+Interestingly, the range it takes can be adjusted by what is in the viewport since if a long duration animation is excluded then everything else adjusts too.
+
+I left some todos too. We really should also handle if the original animation has multiple iterations. Currently we only play those once.
+",2025-03-30T03:01:37Z,2025-04-01T15:44:44Z,2025-04-01T15:44:44Z,2025-04-01T15:44:44Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-30 03:01:37+00:00,2025-04-01 15:44:44+00:00,60.71861111111111
+32788,closed,Get rid of the directional gesture options,"Stacked on #32786.
+
+`startGestureTransition` doesn't have a concept of two directions. It's just a start and end range now.",2025-03-29T21:30:17Z,2025-04-01T16:07:08Z,2025-04-01T16:07:07Z,2025-04-01T16:07:07Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-29 21:30:17+00:00,2025-04-01 16:07:07+00:00,66.6138888888889
+32786,closed,Remove useSwipeTransition,"Stacked on #32785.
+
+This is now replaced by `startGestureTransition` added in #32785.
+
+I also renamed the flag from `enableSwipeTransition` to `enableGestureTransition` to correspond to the new name.
+",2025-03-29T18:24:33Z,2025-04-01T15:43:33Z,2025-04-01T15:43:33Z,2025-04-01T15:43:33Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-29 18:24:33+00:00,2025-04-01 15:43:33+00:00,69.31666666666668
+32785,closed,Add startGestureTransition API,"Stacked on #32783. This will replace [the `useSwipeTransition` API](https://github.com/facebook/react/pull/32373). 
+
+Instead, of a special Hook, you can make updates to `useOptimistic` Hooks within the `startGestureTransition` scope.
+
+```
+import {unstable_startGestureTransition as startGestureTransition} from 'react';
+
+const cancel = startGestureTransition(timeline, () => {
+  setOptimistic(...);
+}, options);
+```
+
+There are some downsides to this like you can't define two directions as once and there's no ""standard"" direction protocol. It's instead up to libraries to come up with their own conventions (although we can suggest some).
+
+The convention is still that a gesture recognizer has two props `action` and `gesture`. The `gesture` prop is a Gesture concept which now behaves more like an Action but 1) it can't be async 2) it shouldn't have side-effects. For example you can't call `setState()` in it except on `useOptimistic` since those can be reverted if needed. The `action` is invoked with whatever side-effects you want after the gesture fulfills.
+
+This is isomorphic and not associated with a specific renderer nor root so it's a bit more complicated.
+
+To implement this I unify with the `ReactSharedInternal.T` property to contain a regular Transition or a Gesture Transition (the `gesture` field). The benefit of this unification means that every time we override this based on some scope like entering `flushSync` we also override the `startGestureTransition` scope. We just have to be careful when we read it to check the `gesture` field to know which one it is. (E.g. I error for setState / requestFormReset.)
+
+The other thing that's unique is the `cancel` return value to know when to stop the gesture. That cancellation is no longer associated with any particular Hook. It's more associated with the scope of the `startGestureTransition`. Since the schedule of whether a particular gesture has rendered or committed is associated with a root, we need to somehow associate any scheduled gestures with a root.
+
+We could track which roots we update inside the scope but instead, I went with a model where I check all the roots and see if there's a scheduled gesture matching the timeline. This means that you could ""retain"" a gesture across roots. Meaning this wouldn't cancel until both are cancelled:
+
+```
+const cancelA = startGestureTransition(timeline, () => {
+  setOptimisticOnRootA(...);
+}, options);
+
+const cancelB = startGestureTransition(timeline, () => {
+  setOptimisticOnRootB(...);
+}, options);
+```
+
+It's more like it's a global transition than associated with the roots that were updated.
+
+Optimistic updates mostly just work but I now associate them with a specific ""ScheduledGesture"" instance since we can only render one at a time and so if it's not the current one, we leave it for later.
+
+Clean up of optimistic updates is now lazy rather than when we cancel. Allowing the cancel closure not to have to be associated with each particular update.",2025-03-29T18:03:30Z,2025-04-01T00:05:50Z,2025-04-01T00:05:50Z,2025-04-01T00:05:50Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-29 18:03:30+00:00,2025-04-01 00:05:50+00:00,54.03888888888889
+32783,closed,Unify BatchConfigTransition and Transition types ,"This is some overdue refactoring. The two types never made sense. It also should be defined by isomorphic since it defines how it should be used by renderers rather than isomorphic depending on Fiber.
+
+Clean up hidden classes to be consistent.
+
+Fix missing name due to wrong types. I choose not to invoke the transition tracing callbacks if there's no name since the name is required there.
+",2025-03-29T03:00:57Z,2025-03-31T23:59:07Z,2025-03-31T23:59:07Z,2025-03-31T23:59:07Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-29 03:00:57+00:00,2025-03-31 23:59:07+00:00,68.96944444444445
+32782,closed,Bump next prerelease version numbers,"Updates the version numbers in the prerelease channels.
+",2025-03-28T20:08:44Z,2025-03-28T20:20:07Z,2025-03-28T20:20:04Z,2025-03-28T20:20:04Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-28 20:08:44+00:00,2025-03-28 20:20:04+00:00,0.18888888888888888
+32781,closed,Add changelog for 19.1.0,,2025-03-28T20:00:09Z,2025-03-28T20:21:29Z,2025-03-28T20:21:29Z,2025-03-28T20:21:29Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mattcarrollcode,2025-03-28 20:00:09+00:00,2025-03-28 20:21:29+00:00,0.35555555555555557
+32780,closed,[compiler][snap] Fix test filter + watch mode,"
+Accidentally broke this when migrating our test runner to use the bundled build https://github.com/facebook/react/pull/32758
+
+The fix is pretty simple. File watcher should listen for changes in `packages/babel-plugin-react-compiler` instead of `cwd`, which is now `packages/snap`.
+",2025-03-28T19:58:12Z,2025-03-28T20:03:09Z,2025-03-28T20:03:09Z,2025-03-28T20:03:08Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-28 19:58:12+00:00,2025-03-28 20:03:08+00:00,0.08222222222222222
+32778,closed,[release] Don't lookup build-info.json when updating version numbers,"
+From what we can see, `build-info.json` is a vestigal file that we were previously including in builds but are no longer since 2022 (see https://github.com/facebook/react/pull/23257, which removes `build-info.json` which would have broken scripts/release/build-release-locally-commands/add-build-info-json.js).
+
+Since this file is no longer built, instead of looking it up we default to the `version` that was passed in as an argument to scripts/release/prepare-release-from-npm.js. Since `version` is what is pulled from npm, there should only be 1 consistent version for all the packages that are pulled. Therefore, only 1 version (eg canary) needs to be replaced to the new stable version.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32778).
+* __->__ #32778
+* #32777",2025-03-28T18:06:09Z,2025-03-28T18:35:32Z,2025-03-28T18:35:30Z,2025-03-28T18:35:30Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-28 18:06:09+00:00,2025-03-28 18:35:30+00:00,0.4891666666666667
+32777,closed,[release] Also split the onlyPackages param,"
+I missed this the last time.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32777).
+* #32778
+* __->__ #32777",2025-03-28T18:06:07Z,2025-03-28T18:35:20Z,2025-03-28T18:35:18Z,2025-03-28T18:35:18Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-28 18:06:07+00:00,2025-03-28 18:35:18+00:00,0.48638888888888887
+32774,closed,Warn for using a React owned node as a Container if it also has text content,"The problem with setting both `children` or `dangerouslySetInnerHTML` and also using a ref on a DOM node to either manually append children or using it as a Container for `createRoot` or `createPortal` is that it's ambiguous which children should win. Ideally you use one of the four options to control children. Meaning that ideally you always use a leaf container for refs like this.
+
+Unfortunately it's very common to use a React owned thing with children as a Container of a Portal. For example `document.body` can have both regular React children and be used as a Portal container. This isn't really fully supported and has some undefined behavior like relative order isn't guaranteed but still very common.
+
+It is extra bad if the children are a `string`/`number` or if `dangerouslySetInnerHTML` is set. Because then when ever that reactively updates it'll clear out any manually added DOM nodes. When this happens isn't guaranteed. It's always happening as far as the reactivity is concerned. See https://github.com/facebook/react/issues/31600
+
+Therefore, we should warn for this specific pattern. This still allows non-text children as a compromise even though that behavior is also somewhat undefined.",2025-03-28T05:43:06Z,2025-04-01T16:11:29Z,2025-04-01T16:11:29Z,2025-04-01T16:11:29Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-28 05:43:06+00:00,2025-04-01 16:11:29+00:00,106.47305555555556
+32772,closed,Mark the root as animating if any Portal mutates or resizes,"Portals and `<ViewTransition>` are tricky because they leave the React tree. You might think of a Portal's container conceptually as also being part of a React tree but that's not quite how they're modeled today. They're more like their own roots. So instead, of trying to find a conceptual place in the React tree we treat Portals as their own root.
+
+We have two ways of tracking whether an update to a ViewTransition boundary has occurred. Either a DOM mutation has happened within it, or a resize of a child has caused it to potentially relayout its parent. Normally that just follows the tree structure of React, but not when it's a Portal.
+
+When it's a Portal we don't know which DOM parent it might have affected. For all we know it's at the root (and in fact, in most cases that's where Portals go).
+
+With this PR we mark the root as having been affected by a mutation or resize. This means that the whole document will animate and we can't optimize away from it. This ensures that a mutation to the root of a Portal doesn't go unanimated with other things are animating such as its parent.
+
+You can regain this optimization by adding a `<ViewTransition>` boundary directly inside the Portal itself so it owns its own animation. If that DOM node is also absolutely positioned it doesn't leak.
+
+Conversely this also means that a mutation inside a Portal doesn't affect its React parent so it won't trigger its parent's animation if this was the only thing animating. That could be unfortunate if this container is actually inside the same React parent. However, because this would have been an update we would've marked it for ""maybe animating"" and updates can't only get their animations cancelled if the root is cancelled, in practice this will actually animate anyway.",2025-03-28T02:47:40Z,2025-03-31T19:13:11Z,2025-03-31T19:13:11Z,2025-03-31T19:13:11Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-28 02:47:40+00:00,2025-03-31 19:13:11+00:00,88.42527777777778
+32769,closed,[compiler] Fix inferEffectDependencies lint false positives,"
+Currently, inferred effect dependencies are considered a ""compiler-required"" feature. This means that untransformed callsites should escalate to a build error.
+
+`ValidateNoUntransformedReferences` iterates 'special effect' callsites and checks that the compiler was able to successfully transform them. Prior to this PR, this relied on checking the number of arguments passed to this special effect.
+
+This obviously doesn't work with `noEmit: true`, which is used for our eslint plugin (this avoids mutating the babel program as other linters run with the same ast). This PR adds a set of `babel.SourceLocation`s to do best effort matching in this mode.
+",2025-03-27T14:57:14Z,2025-03-27T16:18:50Z,2025-03-27T16:18:50Z,2025-03-27T16:18:50Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-27 14:57:14+00:00,2025-03-27 16:18:50+00:00,1.36
+32764,closed,Mark shouldStartViewTransition as true when there's an enter animation,"Typically we mark the name of things that might animate in the snapshot phase. At the same time we track that should call startViewTransition too. However, we don't do this for ""enter"" since they're only marked later. Leading to having just an ""enter"" not to animate unless there's at least another update too.
+
+This tracks if there's a ViewTransitionComponent in the tree that enters. Luckily we know that from the static flag so we don't have to traverse it.",2025-03-26T21:21:36Z,2025-03-26T22:13:50Z,2025-03-26T22:12:59Z,2025-03-26T22:12:59Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-26 21:21:36+00:00,2025-03-26 22:12:59+00:00,0.8563888888888889
+32763,closed,s/HTML/text for text hydration mismatches,,2025-03-26T21:15:52Z,2025-04-01T09:11:45Z,2025-03-26T21:39:52Z,2025-03-26T21:39:52Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",rickhanlonii,2025-03-26 21:15:52+00:00,2025-03-26 21:39:52+00:00,0.4
+32762,closed,feat[devtools]: display native tag for host components for Native,"Native only. Displays the native tag for Native Host components inside a badge, when user inspects the component.
+
+Only displaying will be supported for now, because in order to get native tags indexable, they should be part of the bridge operations, which is technically a breaking change that requires significantly more time investment.
+
+The text will only be shown when user hovers over the badge.
+![Screenshot 2025-03-26 at 19 46 40](https://github.com/user-attachments/assets/787530cf-c5e5-4b85-8e2a-15b006a3d783)
+",2025-03-26T19:48:15Z,2025-04-02T21:44:41Z,2025-04-02T21:44:38Z,2025-04-02T21:44:38Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",hoxyq,2025-03-26 19:48:15+00:00,2025-04-02 21:44:38+00:00,169.93972222222223
+32761,closed,"Add ""auto"" class to mean the built-in should run","Stacked on https://github.com/facebook/react/pull/32734
+
+In React a ViewTransition class of `""none""` doesn't just mean that it has no class but also that it has no ViewTransition name. The default (`null | undefined`) means that it has no specific class but should run with the default built-in animation. This adds this as an explicit string called `""auto""` as well.
+
+That way you can do `<ViewTransition default=""foo"" enter=""auto"">` to override the ""foo"" just for the ""enter"" trigger to be the default built-in animation. Where as if you just specified `null` it would be like not specifying enter at all which would trigger ""foo"".
+",2025-03-26T18:52:51Z,2025-03-26T19:11:48Z,2025-03-26T19:02:43Z,2025-03-26T19:02:43Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-26 18:52:51+00:00,2025-03-26 19:02:43+00:00,0.16444444444444445
+32760,closed,Don't flush synchronous work if we're in the middle of a ViewTransition async sequence,"Starting a View Transition is an async sequence. Since React can get a sync update in the middle of sequence we sometimes interrupt that sequence.
+
+Currently, we don't actually cancel the View Transition so it can just run as a partial. This ensures that we fully skip it when that happens, as well as warn.
+
+However, it's very easy to trigger this with just a setState in useLayoutEffect right now. Therefore if we're inside the preparing sequence of a startViewTransition, this delays work that would've normally flushed in a microtask. ~Maybe we want to do the same for Default work already scheduled through a scheduler Task.~ Edit: This was already done.
+
+`flushSync` currently will still lead to an interrupted View Transition (with a warning). There's a tradeoff here whether we want to try our best to preserve the guarantees of `flushSync` or favor the animation. It's already possible to suspend at the root with `flushSync` which means it's not always 100% guaranteed to commit anyway. We could treat it as suspended. But let's see how much this is a problem in practice.",2025-03-26T18:14:08Z,2025-03-26T18:40:24Z,2025-03-26T18:40:24Z,2025-03-26T18:40:24Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-26 18:14:08+00:00,2025-03-26 18:40:24+00:00,0.43777777777777777
+32759,closed,[compiler][be] Playground now uses tsup bundled plugin,"Followup to https://github.com/facebook/react/pull/32758.
+
+This moves playground to use the tsup bundled plugin instead of webpack-built `babel-plugin-react-compiler`.
+
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32759).
+* __->__ #32759
+* #32758",2025-03-26T17:50:25Z,2025-03-26T22:34:03Z,2025-03-26T18:31:20Z,2025-03-26T18:31:20Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-26 17:50:25+00:00,2025-03-26 18:31:20+00:00,0.6819444444444445
+32758,closed,[compiler][be] Test runner (snap) now uses tsup bundled plugin,"Currently, `babel-plugin-react-compiler` is bundled with (almost) all external dependencies. This is because babel traversal and ast logic is not forward-compatible. Since `babel-plugin-react-compiler` needs to be compatible with babel pipelines across a wide semvar range, we (1) set this package's babel dependency to an early version and (2) inline babel libraries into our bundle.
+
+A few other packages in `react/compiler` depend on the compiler. This PR moves `snap`, our test fixture compiler and evaluator, to use the bundled version of `babel-plugin-react-compiler`. This decouples the babel version used by `snap` with the version used by `babel-plugin-react-compiler`, which means that `snap` now can test features from newer babel versions (see https://github.com/facebook/react/pull/32742).
+
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32758).
+* #32759
+* __->__ #32758",2025-03-26T17:39:37Z,2025-03-26T18:28:27Z,2025-03-26T18:27:42Z,2025-03-26T18:27:42Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-26 17:39:37+00:00,2025-03-26 18:27:42+00:00,0.8013888888888889
+32757,closed,[ci] Skip yarn install on cache hit,"
+We currently already do this in runtime_build_and_test, we can reuse the same technique in other workflows to speed them up.
+",2025-03-26T16:17:59Z,2025-03-26T17:13:42Z,2025-03-26T17:13:39Z,2025-03-26T17:13:39Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-26 16:17:59+00:00,2025-03-26 17:13:39+00:00,0.9277777777777778
+32752,closed,Warn for duplicate ViewTransition names,"This adds early logging when two ViewTransitions with the same name are mounted at the same time. Whether they're part of a View Transition or not.
+
+This lets us include the owner stack of each one. I do two logs so that you can get the stack trace of each one of the duplicates.
+
+It currently only logs once for each name which also avoids the scenario when you have many hits for the same name in one commit. However, we could also possibly log a stack for each of them but seems noisy.
+
+Currently we don't log if a SwipeTransition is the first time the pair gets mounted which could lead to a View Transition error before we've warned. That could be a separate improvement.",2025-03-26T00:54:20Z,2025-03-26T02:03:31Z,2025-03-26T02:03:05Z,2025-03-26T02:03:05Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-26 00:54:20+00:00,2025-03-26 02:03:05+00:00,1.1458333333333333
+32751,closed,Add getComputedStyle helper to ViewTransition refs,This is also sometimes useful to read the style of the pseudo-element itself without an animation.,2025-03-25T22:57:59Z,2025-03-26T19:02:54Z,2025-03-26T19:02:53Z,2025-03-26T19:02:53Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-25 22:57:59+00:00,2025-03-26 19:02:53+00:00,20.081666666666667
+32749,closed,Avoid double logging component render time,"This got moved into the functional component and class component case statements here: https://github.com/facebook/react/commit/0de1233fd180969f7ffdfc98151922f2466ceb1f. So that we could separate the error case for class components.
+
+However, due to a faulty rebase this got restored at the top as well. Leading to double component renders being logged.
+
+In the other offscreen reconnect passes we don't do this in each case statement but still once at the top. The reason this doesn't matter is because use the PerformedWork flag and that is only set for function and class components. Although maybe it should be set for expensive DOM components too and then we have to remember this.
+
+",2025-03-25T19:53:17Z,2025-03-26T00:57:20Z,2025-03-26T00:57:20Z,2025-03-26T00:57:20Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-25 19:53:17+00:00,2025-03-26 00:57:20+00:00,5.0675
+32748,closed,[ci] Fix param casing,"
+Casing was incorrect.
+
+Tested by running locally with a PAT.
+
+```
+$ scripts/release/download-experimental-build.js --commit=2d40460cf768071d3a70b4cdc16075d23ca1ff25
+Command failed: gh attestation verify artifacts_combined.zip --repo=facebook/react
+
+Error: failed to fetch attestations from facebook/react: HTTP 404: Not Found (https://api.github.com/repos/facebook/react/attestations/sha256:23d05644f9e49e02cbb441e3932cc4366b261826e58ce222ea249a6b786f0b5f?per_page=30)
+`gh attestation verify artifacts_combined.zip --repo=facebook/react` (exited with error code 1)
+
+$ scripts/release/download-experimental-build.js --commit=2d40460cf768071d3a70b4cdc16075d23ca1ff25 --noVerify
+⠼ Downloading artifacts from GitHub for commit 2d40460cf768071d3a70b4cdc16075d23ca1ff25)  5%                  0.1m, estimated 1.6m
+✓ Downloading artifacts from GitHub for commit 2d40460cf768071d3a70b4cdc16075d23ca1ff25) 9.5 secs
+An experimental build has been downloaded!
+
+You can download this build again by running:
+  scripts/download-experimental-build.js --commit=2d40460cf768071d3a70b4cdc16075d23ca1ff25
+```
+",2025-03-25T19:35:09Z,2025-03-25T20:05:44Z,2025-03-25T20:05:41Z,2025-03-25T20:05:41Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-25 19:35:09+00:00,2025-03-25 20:05:41+00:00,0.508888888888889
+32746,closed,[ci] Fix incorrect condition,"
+Oops, missed this when I switched it from checking if its a fork to checking if its from this repo.
+",2025-03-25T18:23:11Z,2025-03-25T18:37:53Z,2025-03-25T18:37:51Z,2025-03-25T18:37:51Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-25 18:23:11+00:00,2025-03-25 18:37:51+00:00,0.24444444444444444
+32742,closed,feat(babel-plugin-react-compiler): support satisfies operator,Solve https://github.com/facebook/react/pull/29818,2025-03-25T15:44:43Z,2025-03-28T15:15:02Z,2025-03-28T15:10:32Z,2025-03-28T15:10:32Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",rodrigofariow,2025-03-25 15:44:43+00:00,2025-03-28 15:10:32+00:00,71.43027777777779
+32741,closed,[crud] Revert CRUD overload,"
+Cleans up this experiment. After some internal experimentation we are deprioritizing this project for now and may revisit it at a later point.
+",2025-03-25T15:33:09Z,2025-03-26T16:05:01Z,2025-03-26T16:04:58Z,2025-03-26T16:04:58Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-25 15:33:09+00:00,2025-03-26 16:04:58+00:00,24.530277777777776
+32739,closed,[ci] Run stale cache cleanup every 6 hours,"
+Run this a bit more frequently so we don't thrash `main` caches as often.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32739).
+* __->__ #32739
+* #32738",2025-03-25T14:53:33Z,2025-03-25T15:16:43Z,2025-03-25T15:16:41Z,2025-03-25T15:16:41Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-25 14:53:33+00:00,2025-03-25 15:16:41+00:00,0.38555555555555554
+32738,closed,[ci] Dont sign builds originating from anything other than facebook/react,"
+We now generate attestations in `process_artifacts_combined` so we can verify the provenance of the build later in other workflows. However, this requires `write` permissions for `id-token` and `attestations` so PRs from forks cannot generate this attestation.
+
+To get around this, I added a `--no-verify` flag to scripts/release/download-experimental-build.js. This flag is only passed in `runtime_build_and_test.yml` for the sizebot job, since 1) the workflow runs in the `pull_request` trigger which has read-only permissions, and 2) the downloaded artifact is only used for sizebot calculation, and not actually used.
+
+The flag is explicitly not passed in `runtime_commit_artifacts.yml` since there we actually use the artifact internally. This is fine as once a PR lands on main, it will then run the build on that new commit and generate an attestation.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32738).
+* #32739
+* __->__ #32738",2025-03-25T14:30:45Z,2025-03-25T15:16:22Z,2025-03-25T15:16:19Z,2025-03-25T15:16:19Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-25 14:30:45+00:00,2025-03-25 15:16:19+00:00,0.7594444444444445
+32734,closed,"Rename <ViewTransition className=""...""> to <ViewTransition default=""..."">","It was always confusing that this is not a CSS class but a view-transition-class.
+
+The `className` sticks out a bit among its siblings `enter`, `exit`, `update` and `share`. The idea is that the most specific definition override is the class name that gets applied and this prop is really just the fallback, catch-all or ""any"" that is applied if you didn't specify a more specific one.
+
+It has also since evolved not just to take a string but also a map of Transition Type to strings.
+
+The ""class"" is really the type of the value. We could add a suffix to all of them like `defaultClass`, `enterClass`, `exitClass`, `updateClass` and `shareClass`. However, this doesn't necessarily make sense with the mapping of Transition Type to string. It also makes it a bit too DOM centric. In React Native this might still be called a ""class"" but it might be represented by an object definition. We might even allow some kind of inline style form for the DOM too. Really this is about picking which ""animation"" that runs which can be a string or instance. ""Animation"" is too broad because there's also a concept of a CSS Animation and these are really sets of CSS animations (group, image-pair, old, new). It could maybe be `defaultTransition`, `enterTransition`, etc but that seems unnecessarily repetitive and still doesn't say anything about it being a class.
+
+We also already have the name ""default"" in the map of Transition Types. In fact you can now specify a default for default:
+
+```
+<ViewTransition default={{""navigation-back"": ""slide-out"", ""default"": ""fade-in""}}>
+```
+
+One thing I don't like about the name `""default""` is that it might be common to just apply a named class that does it matching to enter/exit/update in the CSS selectors (such as the `:only-child` rule) instead of doing that mapping to each one using React. In that can you end up specifying only `default={...}` a lot and then what is it the ""default"" for? It's more like ""all"". I think it's likely that you end up with either ""default"" or the specific forms instead of both at once.",2025-03-25T03:41:11Z,2025-03-26T19:02:06Z,2025-03-26T19:02:05Z,2025-03-26T19:02:05Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-25 03:41:11+00:00,2025-03-26 19:02:05+00:00,39.348333333333336
+32733,closed,[flow] Replace $PropertyType with indexed access type in ReactNativeTypes,"## Summary
+
+Replace these deprecated types to prepare for removal of support in Flow.
+
+## How did you test this change?
+
+flow
+",2025-03-24T23:27:59Z,2025-03-25T03:00:53Z,2025-03-25T03:00:48Z,2025-03-25T03:00:48Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",SamChou19815,2025-03-24 23:27:59+00:00,2025-03-25 03:00:48+00:00,3.5469444444444442
+32732,closed,[ci] Add GH_TOKEN as secret input to prereleases,"
+Seems like this also needs to be specified
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32732).
+* #32730
+* __->__ #32732",2025-03-24T22:50:00Z,2025-03-24T22:59:20Z,2025-03-24T22:59:17Z,2025-03-24T22:59:17Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-24 22:50:00+00:00,2025-03-24 22:59:17+00:00,0.15472222222222223
+32730,closed,[ci] Pass GH_TOKEN to runtime_prereleases,"
+Seems like this also needs to be specified.
+
+Note: #32732 needs to land first.
+",2025-03-24T22:41:37Z,2025-03-24T23:08:44Z,2025-03-24T23:08:41Z,2025-03-24T23:08:41Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-24 22:41:37+00:00,2025-03-24 23:08:41+00:00,0.45111111111111113
+32729,closed,[ci] Fix missing permissions for prereleases,"
+Missed these earlier.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32729).
+* __->__ #32729
+* #32728",2025-03-24T21:58:57Z,2025-03-24T22:24:59Z,2025-03-24T22:24:45Z,2025-03-24T22:24:45Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-24 21:58:57+00:00,2025-03-24 22:24:45+00:00,0.43
+32728,closed,[scripts] Verify artifact integrity when downloading,"
+Uses https://cli.github.com/manual/gh_attestation_verify to verify that the downloaded artifact matches the attestation generated during the build process in runtime_commit_artifacts.
+
+Example:
+
+On a workflow run of runtime_build_and_test.yml with no attestations:
+```
+$ scripts/release/download-experimental-build.js --commit=ea5f065745b777cb41cc9e54a3b29ed8c727a574
+
+Command failed: gh attestation verify artifacts_combined.zip --repo=facebook/react
+
+Error: failed to fetch attestations from facebook/react: HTTP 404: Not Found (https://api.github.com/repos/facebook/react/attestations/sha256:7adba0992ba477a927aad5a07f95ee2deb7d18427c84279d33fc40a3bc28ebaa?per_page=30)
+`gh attestation verify artifacts_combined.zip --repo=facebook/react` (exited with error code 1)
+```
+
+On one which does:
+
+```
+$ scripts/release/download-experimental-build.js --commit=12e85d74c1c233cdc2f3228a97473a4435d50c3b
+
+✓ Downloading artifacts from GitHub for commit 12e85d74c1c233cdc2f3228a97473a4435d50c3b) 10.5 secs
+An experimental build has been downloaded!
+
+You can download this build again by running:
+  scripts/download-experimental-build.js --commit=12e85d74c1c233cdc2f3228a97473a4435d50c3b
+```
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32728).
+* #32729
+* __->__ #32728",2025-03-24T21:57:06Z,2025-03-24T22:24:36Z,2025-03-24T22:24:33Z,2025-03-24T22:24:33Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-24 21:57:06+00:00,2025-03-24 22:24:33+00:00,0.4575
+32727,closed,[ci] Make maintainer check always remote,"
+To prevent local modification of the MAINTAINERS file we now always fetch from `main` instead.
+",2025-03-24T20:05:53Z,2025-03-24T20:40:17Z,2025-03-24T20:40:14Z,2025-03-24T20:40:14Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-24 20:05:53+00:00,2025-03-24 20:40:14+00:00,0.5725
+32726,closed,Fix ownerStackLimit feature gating for tests,"https://github.com/facebook/react/pull/32529 added a dynamic flag for this, but that breaks tests since the flags are not defined everywhere.
+
+However, this is a static value and the flag is only for supporting existing tests. So we can override it in the test config, and make it static at built time instead.",2025-03-24T19:46:15Z,2025-03-26T16:01:06Z,2025-03-26T16:01:06Z,2025-03-26T16:01:06Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",rickhanlonii,2025-03-24 19:46:15+00:00,2025-03-26 16:01:06+00:00,44.2475
+32725,closed,[ci] fix notify/label actions for forks,"Need this to run against target for forks to get the notification.
+
+This job does not checkout the code in the PR, so it's safe to run from the target.
+
+Also fixes failing checks on PRs:
+
+<img width=""870"" alt=""Screenshot 2025-03-24 at 3 28 30 PM"" src=""https://github.com/user-attachments/assets/add78287-6449-4e48-9376-f3b360d2607c"" />
+",2025-03-24T19:23:52Z,2025-03-24T19:47:00Z,2025-03-24T19:46:59Z,2025-03-24T19:46:59Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",rickhanlonii,2025-03-24 19:23:52+00:00,2025-03-24 19:46:59+00:00,0.3852777777777778
+32724,closed,[compiler][bugfix] Fix hoisting of let declarations,"
+(Found when compiling Meta React code)
+
+Let variable declarations and reassignments are currently rewritten to `StoreLocal <varName>` instructions, which each translates to a new `const varName` declaration in codegen.
+
+```js
+// Example input
+function useHook() {
+  const getX = () => x;
+  let x = CONSTANT1;
+  if (cond) {
+    x += CONSTANT2;
+  }
+  return <Stringify getX={getX} />
+}
+
+// Compiled output, prior to this PR
+import { c as _c } from ""react/compiler-runtime"";
+function useHook() {
+  const $ = _c(1);
+  let t0;
+  if ($[0] === Symbol.for(""react.memo_cache_sentinel"")) {
+    const getX = () => x;
+    let x = CONSTANT1;
+    if (cond) {
+      let x = x + CONSTANT2;
+      x;
+    }
+
+    t0 = <Stringify getX={getX} />;
+    $[0] = t0;
+  } else {
+    t0 = $[0];
+  }
+  return t0;
+}
+```
+
+This also manifests as a babel internal error when replacing the original function declaration with the compiler output. The below compilation output fails with `Duplicate declaration ""x"" (This is an error on an internal node. Probably an internal error.)`.
+```js
+// example input
+let x = CONSTANT1;
+if (cond) {
+  x += CONSTANT2;
+  x = CONSTANT3;
+}
+
+// current output
+let x = CONSTANT1;
+if (playheadDragState) {
+  let x = x + CONSTANT2
+  x;
+  let x = CONSTANT3;
+}
+```
+",2025-03-24T18:08:41Z,2025-03-26T22:36:30Z,2025-03-24T18:30:17Z,2025-03-24T18:30:17Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-24 18:08:41+00:00,2025-03-24 18:30:17+00:00,0.36
+32723,closed,Merge ViewTransition layout/onLayout props into update/onUpdate,"We currently have the ability to have a separate animation for a ViewTransition that relayouts but doesn't actually have any internal mutations. This can be useful if you want to separate just a move from for example flashing an update.
+
+However, we're concerned that this might be more confusion than its worth because subtle differences in mutations can cause it to trigger the other case. The existence of the property name might also make you start looking for it to solve something that it's not meant for.
+
+We already fallback to using the ""update"" property if it exists but layout doesn't. So if we ever decide to add this back it would backwards compatible. We've also shown in implementation that it can work.
+",2025-03-24T17:16:37Z,2025-03-24T18:04:28Z,2025-03-24T18:04:28Z,2025-03-24T18:04:28Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",sebmarkbage,2025-03-24 17:16:37+00:00,2025-03-24 18:04:28+00:00,0.7975
+32711,closed,[ci] Add artifact attestation to build,"
+Adds a signed build provenance attestations via https://github.com/actions/attest-build-provenance
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32711).
+* #32729
+* #32728
+* __->__ #32711",2025-03-21T20:49:23Z,2025-03-24T22:13:39Z,2025-03-24T22:13:37Z,2025-03-24T22:13:37Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-21 20:49:23+00:00,2025-03-24 22:13:37+00:00,73.40388888888889
+32710,closed,[ci] Add missing permissions to runtime_commit_artifacts.yml,"
+Turns out we need permissions to write to `contents` after all.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32710).
+* #32711
+* __->__ #32710",2025-03-21T20:31:48Z,2025-03-21T22:01:05Z,2025-03-21T22:01:02Z,2025-03-21T22:01:02Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-21 20:31:48+00:00,2025-03-21 22:01:02+00:00,1.4872222222222222
+32709,closed,[ci] Also give permissions on pull_requests,"
+Missed one
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32709).
+* #32708
+* __->__ #32709",2025-03-21T20:10:22Z,2025-03-21T20:17:18Z,2025-03-21T20:17:15Z,2025-03-21T20:17:15Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-21 20:10:22+00:00,2025-03-21 20:17:15+00:00,0.11472222222222223
+32708,closed,[ci] Don't use pull_request_target,"
+`pull_request_target` gives access to repository secrets and permissions for use from forks, for example to add a comment.
+
+> Due to the dangers inherent to automatic processing of PRs, GitHub’s standard pull_request workflow trigger by default prevents write permissions and secrets access to the target repository. However, in some scenarios such access is needed to properly process the PR. To this end the pull_request_target workflow trigger was introduced.
+
+> The reason to introduce the pull_request_target trigger was to enable workflows to label PRs (e.g. needs review) or to comment on the PR.
+
+(via https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/)
+
+In this case there is no reason for us to allow this, so let's just use the normal `pull_request` trigger which is less permissive.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32708).
+* __->__ #32708
+* #32709",2025-03-21T19:59:03Z,2025-03-21T20:17:31Z,2025-03-21T20:17:28Z,2025-03-21T20:17:28Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-21 19:59:03+00:00,2025-03-21 20:17:28+00:00,0.30694444444444446
+32707,closed,[ci] Add missing permissions,"
+
+
+Missed these ones earlier.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32707).
+* #32708
+* __->__ #32707",2025-03-21T19:45:53Z,2025-03-21T20:07:12Z,2025-03-21T20:07:09Z,2025-03-21T20:07:09Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",poteto,2025-03-21 19:45:53+00:00,2025-03-21 20:07:09+00:00,0.35444444444444445
+32706,closed,[compiler][be] Move e2e tests to BabelPlugin transformer,"
+Clean up jest-e2e setup since https://github.com/facebook/react/pull/32663 and other features need program context (e.g. changing imports)
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32706).
+* #32663
+* __->__ #32706",2025-03-21T19:13:01Z,2025-03-22T02:02:11Z,2025-03-22T00:05:23Z,2025-03-22T00:05:23Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",mofeiZ,2025-03-21 19:13:01+00:00,2025-03-22 00:05:23+00:00,4.872777777777777
+32704,closed,[ci] Scope permissions for all workflows,"
+This PR restricts permissions on all workflows for the `github.token` to none by default. Where needed, specific permissions are added only in the job that requires them.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32704).
+* __->__ #32704
+* #32701",2025-03-21T16:41:24Z,2025-03-21T18:41:03Z,2025-03-21T18:40:56Z,2025-03-21T18:40:56Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-21 16:41:24+00:00,2025-03-21 18:40:56+00:00,1.9922222222222221
+32701,closed,[ci] Scope permissions for runtime_commit_artifacts.yml,"
+By default the github token is used with write-all permissions. Let's scope it down to just what we need.
+
+https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#permissions
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32701).
+* #32704
+* __->__ #32701",2025-03-21T16:12:23Z,2025-03-21T18:40:43Z,2025-03-21T18:40:35Z,2025-03-21T18:40:35Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-21 16:12:23+00:00,2025-03-21 18:40:35+00:00,2.47
+32699,closed,Force layout before startViewTransition,"This works around this Safari bug. https://bugs.webkit.org/show_bug.cgi?id=290146
+
+This unfortunate because it may cause additional layouts if there's more updates to the tree coming by manual mutation before it gets painted naturally. However, we might end up wanting to read layout early anyway.
+
+This affects the fixture because we clone the `<link>` from the `<head>` which is itself another bug. However, it should be possible to have `<link>` tags inserted into the new tree so this is still relevant.",2025-03-21T02:32:40Z,2025-03-21T14:05:31Z,2025-03-21T14:05:31Z,2025-03-21T14:05:31Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-21 02:32:40+00:00,2025-03-21 14:05:31+00:00,11.5475
+32698,closed,[compiler][optim] Add Effect.ConditionallyMutateIterator,"
+Adds Effect.ConditionallyMutateIterator, which has the following effects:
+- capture for known array, map, and sets
+- mutate for all other values
+
+An alternative to this approach could be to add polymorphic shape definitions
+",2025-03-20T23:52:46Z,2025-03-26T22:36:32Z,2025-03-24T03:25:56Z,2025-03-24T03:25:56Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-20 23:52:46+00:00,2025-03-24 03:25:56+00:00,75.55277777777778
+32697,closed,[compiler][optim] Add map and set constructors,"
+* Adds `isConstructor: boolean` to `FunctionType`. With this PR, each typed function can either be a constructor (currently only known globals) or non constructor. Alternatively, we prefer to encode polymorphic types / effects (and match the closest subtype)
+
+* Add Map and Set globals + built-ins
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32697).
+* #32698
+* __->__ #32697",2025-03-20T23:52:45Z,2025-03-26T22:36:34Z,2025-03-24T03:19:01Z,2025-03-24T03:19:01Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-20 23:52:45+00:00,2025-03-24 03:19:01+00:00,75.43777777777778
+32696,closed,[compiler][be] Refactor similar CallExpression and MethodCall effect handling,"
+Simplify InferReferenceEffect function signature matching logic for next PRs in stack
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32696).
+* #32698
+* #32697
+* __->__ #32696
+* #32695",2025-03-20T23:52:44Z,2025-03-26T22:36:34Z,2025-03-24T03:07:49Z,2025-03-24T03:07:49Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-20 23:52:44+00:00,2025-03-24 03:07:49+00:00,75.25138888888888
+32695,closed,[compiler][fix] mutableOnlyIfOperandsAreMutable does not apply when operands are globals,"
+Globals, module locals, and other locally defined functions may mutate their arguments. See test fixtures for details
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32695).
+* #32698
+* #32697
+* #32696
+* __->__ #32695",2025-03-20T23:47:21Z,2025-03-26T22:36:35Z,2025-03-24T03:07:24Z,2025-03-24T03:07:24Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-20 23:47:21+00:00,2025-03-24 03:07:24+00:00,75.33416666666666
+32693,closed,[ci] Bump number of shards for test_build to 10,"
+I noticed `test_build` can take a while so let's bump the number of shards
+",2025-03-20T21:24:23Z,2025-03-20T21:49:39Z,2025-03-20T21:49:36Z,2025-03-20T21:49:36Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 21:24:23+00:00,2025-03-20 21:49:36+00:00,0.42027777777777775
+32692,closed,[ci] Rename other stale branch workflow,"
+Makes it easier to tell what is what
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32692).
+* __->__ #32692
+* #32691",2025-03-20T21:13:51Z,2025-03-25T17:52:45Z,2025-03-20T21:19:47Z,2025-03-20T21:19:47Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 21:13:51+00:00,2025-03-20 21:19:47+00:00,0.09888888888888889
+32691,closed,[ci] Add daily stale branch cache cleanup,"
+Cleans up stale non-main caches daily
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32691).
+* #32692
+* __->__ #32691",2025-03-20T21:11:33Z,2025-03-20T21:17:46Z,2025-03-20T21:17:44Z,2025-03-20T21:17:44Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 21:11:33+00:00,2025-03-20 21:17:44+00:00,0.10305555555555555
+32690,closed,[ci] Don't fail on cache miss,"
+Partially reverts #32686.
+
+PR caches inherit from caches generated in `main`. If it cannot find that cache, it will create one scoped to just that PR (and PRs that inherit from it).
+
+There is an edge case where cache eviction can happen in the middle of a test run. If cache eviction removes a `main` cache, child jobs that depend on it will start failing because of the `fail-on-cache-miss` setting.
+
+This PR reverts the default behavior. If this happens, the workflow will still continue in slow mode where it will `yarn install` child jobs instead of reusing from cache. This is slower but will at least allow workflows to continue.
+
+Additionally I added restore keys so that we can fallback to other  caches if present so `yarn install` doesn't need to start over from scratch.
+",2025-03-20T20:55:22Z,2025-03-20T21:02:41Z,2025-03-20T21:02:39Z,2025-03-20T21:02:39Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 20:55:22+00:00,2025-03-20 21:02:39+00:00,0.1213888888888889
+32688,closed,[compiler] Refactor validations to return Result and log where appropriate,"Stack from [ghstack](https://github.com/ezyang/ghstack) (oldest at bottom):
+* __->__ #32688
+* #32683
+
+Updates ~all of our validations to return a Result, and then updates callers to either unwrap() if they should bailout or else just log.",2025-03-20T17:15:58Z,2025-03-20T18:02:15Z,2025-03-20T18:02:08Z,2025-03-20T18:02:08Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",josephsavona,2025-03-20 17:15:58+00:00,2025-03-20 18:02:08+00:00,0.7694444444444445
+32687,closed,[ci] Also cache playground playwright browsers,"
+Following #32678, do the same for the playground e2e test since this step can sometimes take many minutes to complete.
+",2025-03-20T16:24:34Z,2025-03-20T17:53:33Z,2025-03-20T17:53:31Z,2025-03-20T17:53:31Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 16:24:34+00:00,2025-03-20 17:53:31+00:00,1.4825
+32686,closed,[ci] Fail on cache miss,"
+Since we use a centralized cache we should fail subsequent steps if the child jobs are unable to restore the cache from the first 2 jobs.
+
+Also fix some incorrect hashes used for the fixture tests.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32686).
+* __->__ #32686
+* #32685",2025-03-20T16:12:44Z,2025-03-20T16:22:09Z,2025-03-20T16:22:06Z,2025-03-20T16:22:06Z,"[{'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 16:12:44+00:00,2025-03-20 16:22:06+00:00,0.15611111111111112
+32685,closed,[ci] Warm cache,"
+Try restoring from old caches as a base to speed up the case where node_modules needs updating.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32685).
+* #32686
+* __->__ #32685",2025-03-20T16:12:42Z,2025-03-20T16:21:54Z,2025-03-20T16:21:50Z,2025-03-20T16:21:50Z,"[{'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-20 16:12:42+00:00,2025-03-20 16:21:50+00:00,0.15222222222222223
+32684,closed,Set accurate value for alwaysThrottleRetries on www,"This flag value was updated in https://github.com/facebook/react/pull/28965 (seemingly unrelated, maybe as part of unit testing). But its still controlled by a dynamic flag in www. Let's update this to VARIANT to accurately represent the state of the rollout.
+
+Before:
+<img width=""1340"" alt=""Screenshot 2025-03-20 at 10 45 30 AM"" src=""https://github.com/user-attachments/assets/d0405a36-eb71-4108-9e23-8d462cc68fb4"" />
+
+After:
+<img width=""1351"" alt=""Screenshot 2025-03-20 at 10 45 11 AM"" src=""https://github.com/user-attachments/assets/459d260d-7a25-430b-95a6-d6a91d958417"" />
+",2025-03-20T14:48:20Z,2025-03-20T18:28:58Z,2025-03-20T18:28:55Z,2025-03-20T18:28:55Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",jackpope,2025-03-20 14:48:20+00:00,2025-03-20 18:28:55+00:00,3.676388888888889
+32683,closed,[compiler] Validate static components,"Stack from [ghstack](https://github.com/ezyang/ghstack) (oldest at bottom):
+* #32688
+* __->__ #32683
+
+React uses function identity to determine whether a given JSX expression represents the same type of component and should reconcile (keep state, update props) or replace (teardown state, create a new instance). This PR adds off-by-default validation to check that developers are not dynamically creating components during render.
+
+The check is local and intentionally conservative. We specifically look for the results of call expressions, new expressions, or function expressions that are then used directly (or aliased) as a JSX tag. This allows common sketchy but fine-in-practice cases like passing a reference to a component from a parent as props, but catches very obvious mistakes such as:
+
+```js
+function Example() {
+  const Component = createComponent();
+  return <Component />;
+}
+```
+
+We could expand this to catch more cases, but this seems like a reasonable starting point. Note that I tried enabling the validation by default and the only fixtures that error are the new ones added here. I'll also test this internally. What i'm imagining is that we enable this in the linter but not the compiler.",2025-03-19T22:22:00Z,2025-03-20T18:02:12Z,2025-03-20T18:02:06Z,2025-03-20T18:02:06Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",josephsavona,2025-03-19 22:22:00+00:00,2025-03-20 18:02:06+00:00,19.668333333333333
+32682,closed,Add getRootNode to fragment instances,"This implements `getRootNode(options)` on fragment instances as the equivalent of calling `getRootNode` on the fragment's parent host node.
+
+The parent host instance will also be used to proxy dispatchEvent in an upcoming PR.",2025-03-19T21:47:36Z,2025-03-24T14:20:04Z,2025-03-24T14:19:56Z,2025-03-24T14:19:56Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",jackpope,2025-03-19 21:47:36+00:00,2025-03-24 14:19:56+00:00,112.53888888888889
+32681,closed,[ci] Fix Will commit these changes www step,"
+Unlike the fbsource version of the step, www doesn't add any changes so the `force` input doesn't actually work
+",2025-03-19T21:44:05Z,2025-03-19T22:13:25Z,2025-03-19T22:13:06Z,2025-03-19T22:13:06Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 21:44:05+00:00,2025-03-19 22:13:06+00:00,0.4836111111111111
+32680,closed,[ci] Use correct revision for Meta builds,"
+There was a bug previously in our commit artifacts step where the emitted REVISION hash would reference the commit on the builds branch rather than from `main`.
+
+Given that our internal manual sync script also does this, let's align them both to always reference the commit from `main` instead.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32680).
+* __->__ #32680
+* #32679
+* #32678",2025-03-19T21:18:37Z,2025-03-19T21:24:46Z,2025-03-19T21:24:43Z,2025-03-19T21:24:43Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 21:18:37+00:00,2025-03-19 21:24:43+00:00,0.10166666666666667
+32679,closed,[ci] Specify if-no-files-found on actions/upload-artifact@v4,"
+Defaults to warn, but since some steps require these artifacts to be uploaded we specify an error if its not found. Some other steps like playwright test-results are only uploaded on failure so it's okay to ignore.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32679).
+* #32680
+* __->__ #32679
+* #32678",2025-03-19T20:50:00Z,2025-03-19T21:22:44Z,2025-03-19T21:22:40Z,2025-03-19T21:22:40Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 20:50:00+00:00,2025-03-19 21:22:40+00:00,0.5444444444444445
+32678,closed,[ci] Cache playwright browsers,"
+No reason to download them from scratch every time.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32678).
+* #32680
+* #32679
+* __->__ #32678",2025-03-19T20:38:26Z,2025-03-19T21:22:20Z,2025-03-19T21:22:17Z,2025-03-19T21:22:17Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 20:38:26+00:00,2025-03-19 21:22:17+00:00,0.7308333333333333
+32677,closed,[ci] Parameterize branch cleanup,"
+Allow a PR number to be passed as input
+",2025-03-19T20:15:18Z,2025-03-19T20:39:04Z,2025-03-19T20:39:01Z,2025-03-19T20:39:01Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 20:15:18+00:00,2025-03-19 20:39:01+00:00,0.3952777777777778
+32675,closed,[ci] Add cache cleanup workflow,"
+> Caches have branch scope restriction in place. This means that if caches for a specific branch are using a lot of storage quota, it may result into more frequently used caches from default branch getting thrashed. For example, if there are many pull requests happening on a repo and are creating caches, these cannot be used in default branch scope but will still occupy a lot of space till they get cleaned up by eviction policy. But sometime we want to clean them up on a faster cadence so as to ensure default branch is not thrashing.
+
+https://github.com/actions/cache/blob/main/tips-and-workarounds.md#force-deletion-of-caches-overriding-default-cache-eviction-policy
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32675).
+* __->__ #32675
+* #32674",2025-03-19T19:10:44Z,2025-03-19T19:42:07Z,2025-03-19T19:42:05Z,2025-03-19T19:42:05Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 19:10:44+00:00,2025-03-19 19:42:05+00:00,0.5225000000000001
+32674,closed,[ci] Bump build_and_lint to 25 workers,"
+Increases number of workers for `build_and_lint`.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32674).
+* #32675
+* __->__ #32674",2025-03-19T18:52:31Z,2025-03-19T19:41:54Z,2025-03-19T19:41:48Z,2025-03-19T19:41:48Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 18:52:31+00:00,2025-03-19 19:41:48+00:00,0.8213888888888888
+32673,closed,[ci] Properly format commit message take 2,"
+We need to use the commit message from `main`, not the builds branch
+",2025-03-19T17:22:22Z,2025-03-19T18:01:53Z,2025-03-19T18:01:49Z,2025-03-19T18:01:49Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 17:22:22+00:00,2025-03-19 18:01:49+00:00,0.6575
+32672,closed,[ci] Centralize cache,"
+To avoid race conditions where multiple jobs try to write to the same cache, we now centralize saving the cache and then reusing it in every subsequent job.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32672).
+* #32675
+* #32674
+* __->__ #32672",2025-03-19T16:30:52Z,2025-03-19T19:25:11Z,2025-03-19T19:25:07Z,2025-03-19T19:25:07Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 16:30:52+00:00,2025-03-19 19:25:07+00:00,2.904166666666667
+32671,closed,[ci] Bump all node_modules cache keys,"
+I'm seeing a lot of instances of
+
+> Failed to save: Unable to reserve cache with key runtime-and-compiler-node_modules-v5-X64-Linux-e454609794aae66da9909c77dd6efa073eceff7f44d6527611f8465e102578b4, another job may be creating this cache.
+
+which is adding ~20 seconds to every step. Let's try to bust the cache following this [comment](https://github.com/actions/cache/issues/485#issuecomment-744145040) and see if that helps.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32671).
+* #32672
+* __->__ #32671",2025-03-19T16:11:40Z,2025-03-19T18:42:58Z,2025-03-19T18:42:49Z,2025-03-19T18:42:49Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 16:11:40+00:00,2025-03-19 18:42:49+00:00,2.5191666666666666
+32670,closed,Enable Fragment refs in Experimental,That we can test it out in Next.js router conditionally when experimental is on for other reasons.,2025-03-19T15:35:24Z,2025-03-20T00:38:27Z,2025-03-20T00:38:27Z,2025-03-20T00:38:27Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-19 15:35:24+00:00,2025-03-20 00:38:27+00:00,9.050833333333335
+32669,closed,[eprh] Don't transpile to es5,"
+Now that we've moved the sync location of the plugin, we no longer need this since those restrictions no longer apply.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32669).
+* __->__ #32669
+* #32668",2025-03-19T15:29:27Z,2025-03-19T15:49:46Z,2025-03-19T15:49:43Z,2025-03-19T15:49:43Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 15:29:27+00:00,2025-03-19 15:49:43+00:00,0.3377777777777778
+32668,closed,[ci] Properly format commit message,"
+Using the github variable for the commit message replaces the variable inline. If the commit message contains quotes or other characters that need to be escaped, this breaks the workflow.
+---
+[//]: # (BEGIN SAPLING FOOTER)
+Stack created with [Sapling](https://sapling-scm.com). Best reviewed with [ReviewStack](https://reviewstack.dev/facebook/react/pull/32668).
+* #32669
+* __->__ #32668",2025-03-19T15:26:54Z,2025-03-19T15:49:21Z,2025-03-19T15:49:18Z,2025-03-19T15:49:18Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",poteto,2025-03-19 15:26:54+00:00,2025-03-19 15:49:18+00:00,0.37333333333333335
+32666,closed,[eslint-plugin-react-compiler] Fix type error with recommended config,"## Summary
+
+In the recommended configuration for `eslint-plugin-react-compiler`, i.e. `reactCompiler.configs.recommended`, the rule is typed as `string` rather than `eslint.Linter.RuleEntry` or anything assignable thereto, which results in the following type error if you type check your eslint configuration: 
+```
+Property ''react-compiler/react-compiler'' is incompatible with index signature.
+  Type 'string' is not assignable to type 'RuleEntry | undefined'.
+```
+Simply adding a const assertion fixes the error.
+
+## How did you test this change?
+
+I emitted declarations for the module and confirmed that the rule is now typed as the string literal `'error'`",2025-03-19T06:41:14Z,2025-03-19T18:58:09Z,2025-03-19T18:58:09Z,2025-03-19T18:58:09Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}]",niklasholm,2025-03-19 06:41:14+00:00,2025-03-19 18:58:09+00:00,12.281944444444445
+32665,closed,[compiler][bugfix] Don't insert hook guards in retry pipeline,"
+Fixing bug from https://github.com/facebook/react/pull/32164 -- prior to this PR, we inserted hook guards even for functions that bailed out of compilation.
+",2025-03-19T04:27:52Z,2025-03-26T22:36:36Z,2025-03-20T21:25:08Z,2025-03-20T21:25:08Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",mofeiZ,2025-03-19 04:27:52+00:00,2025-03-20 21:25:08+00:00,40.95444444444445
+32664,closed,Minor Fixes to View Transition Fixture,"Follow up to #32656.
+
+Remove touchAction from SwipeRecognizer. I was under the wrong impression that this was only the touch-action applied to this particular element, but that parents would still win but in fact this blocks the parent from scrolling in the other direction. By specifying a fixed direction it also blocked rage-swiping in the other direction early on.
+
+Disable pointer-events on view-transition so that the scroll can be hit. This means that touches hit below the items animating above. This allows swiping to happen again before momentum scroll has finished. Previously they were ignored. This only works as long as the SwipeRecognizer is itself not animating. This means you can now rage-swipe in both directions quickly.",2025-03-18T23:14:03Z,2025-03-18T23:20:34Z,2025-03-18T23:20:34Z,2025-03-18T23:20:34Z,"[{'id': 196858374, 'node_id': 'MDU6TGFiZWwxOTY4NTgzNzQ=', 'url': 'https://api.github.com/repos/facebook/react/labels/CLA%20Signed', 'name': 'CLA Signed', 'color': 'e7e7e7', 'default': False, 'description': None}, {'id': 1775958285, 'node_id': 'MDU6TGFiZWwxNzc1OTU4Mjg1', 'url': 'https://api.github.com/repos/facebook/react/labels/React%20Core%20Team', 'name': 'React Core Team', 'color': '9149d1', 'default': False, 'description': 'Opened by a member of the React Core Team'}]",sebmarkbage,2025-03-18 23:14:03+00:00,2025-03-18 23:20:34+00:00,0.10861111111111112

@@ -13,7 +13,7 @@ GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 if not GITHUB_TOKEN:
     raise ValueError("GITHUB_TOKEN is not set in the .env file")
 
-def fetch_pr_data(owner, repo, state="closed", per_page=100):
+def fetch_pr_data(owner, repo, state="closed", per_page=300):
     base_url = f"https://api.github.com/repos/{owner}/{repo}/pulls"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -30,6 +30,6 @@ def fetch_pr_data(owner, repo, state="closed", per_page=100):
 
 if __name__ == "__main__":
     pr_data = fetch_pr_data("facebook", "react")
-    with open("ml/data/github_prs_raw.json", "w") as f:
+    with open("/Users/cememirsenyurt/github-pr-time-estimator/ml/data/github_prs_raw.json", "w") as f:
         json.dump(pr_data, f, indent=2)
     print(f"Fetched {len(pr_data)} PRs")
