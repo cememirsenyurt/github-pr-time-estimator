@@ -1,0 +1,12 @@
+{
+    "name": "github-pr-time-estimator",
+    "private": true,
+    "scripts": {
+        "start:backend": "cd backend/python-service && uvicorn app:app --reload --port 5000",
+        "start:frontend": "cd frontend && npm run dev",
+        "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}

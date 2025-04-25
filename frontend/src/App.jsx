@@ -1,39 +1,55 @@
-import React, { useState } from 'react';
-import PRInputForm from './components/PRInputForm';
-import PRResult from './components/PRResult';
-import { fetchPR, predictMergeTime } from './api/backend';
+// frontend/src/App.jsx
+import { useState } from "react";
+import PRInputForm from "./components/PRInputForm";
+import PRResult from "./components/PRResult";
+import "./App.css";
 
-export default function App() {
-  const [pr, setPr] = useState(null);
-  const [pred, setPred] = useState(null);
-  const [error, setError] = useState('');
+function App() {
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState("");
 
-  const handleSubmit = async ({ owner, repo, number }) => {
-    setError('');
-    setPr(null);
-    setPred(null);
-
+  async function handlePredict(payload) {
+    setLoading(true);
+    setResult(null);
+    setError("");
+  
     try {
-      const prData = await fetchPR(owner, repo, number);
-      setPr(prData);
-      const hours = await predictMergeTime({
-        title: prData.title,
-        body: prData.body || '',
-        labels: prData.labels || [],
-        state: prData.state
+      const res = await fetch("/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
-      setPred(hours);
+  
+      if (!res.ok) {
+        // try to pull a JSON error, but fall back gracefully
+        let msg = `Error ${res.status}`;
+        try {
+          const err = await res.json();
+          msg = err.detail || err.message || msg;
+        } catch (_) { /* ignore JSON parse errors */ }
+        throw new Error(msg);
+      }
+  
+      const data = await res.json();
+      setResult(data);
     } catch (e) {
-      setError(e.response?.data || e.message);
+      console.error("prediction error", e);
+      setError(e.message);
+    } finally {
+      setLoading(false);
     }
-  };
+  }
+  
 
   return (
-    <div style={{ maxWidth: 600, margin: '0 auto' }}>
-      <h1>PR Merge Time Estimator</h1>
-      <PRInputForm onSubmit={handleSubmit} />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <PRResult pr={pr} predictedHours={pred} />
+    <div className="App" style={{ maxWidth: 600, margin: "2rem auto" }}>
+      <h1>GitHub PR Time-to-Merge Estimator</h1>
+      <PRInputForm onSubmit={handlePredict} />
+      {loading && <p>⏳ Fetching & predicting…</p>}
+      <PRResult result={result} error={error} />
     </div>
   );
 }
+
+export default App;

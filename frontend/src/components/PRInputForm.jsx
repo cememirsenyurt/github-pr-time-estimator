@@ -1,39 +1,56 @@
-import React, { useState } from 'react';
+// frontend/src/components/PRInputForm.jsx
+import { useState } from "react";
 
 export default function PRInputForm({ onSubmit }) {
-  const [owner, setOwner] = useState('');
-  const [repo, setRepo] = useState('');
-  const [number, setNumber] = useState('');
+  const [owner, setOwner] = useState("facebook");
+  const [repo, setRepo] = useState("react");
+  const [prNumber, setPrNumber] = useState("32812");
 
-  const handle = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ owner, repo, number: Number(number) });
+    // make sure pr_number is an integer
+    onSubmit({
+      owner: owner.trim(),
+      repo: repo.trim(),
+      pr_number: parseInt(prNumber, 10),
+    });
   };
 
   return (
-    <form onSubmit={handle} style={{ marginBottom: '1rem' }}>
-      <input
-        type="text"
-        placeholder="Owner (e.g. facebook)"
-        value={owner}
-        onChange={e => setOwner(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Repo (e.g. react)"
-        value={repo}
-        onChange={e => setRepo(e.target.value)}
-        required
-      />
-      <input
-        type="number"
-        placeholder="PR #"
-        value={number}
-        onChange={e => setNumber(e.target.value)}
-        required
-      />
-      <button type="submit">Go!</button>
+    <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
+      <label>
+        Owner
+        <input
+          type="text"
+          value={owner}
+          onChange={(e) => setOwner(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        Repo
+        <input
+          type="text"
+          value={repo}
+          onChange={(e) => setRepo(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        PR #
+        <input
+          type="number"
+          value={prNumber}
+          onChange={(e) => setPrNumber(e.target.value)}
+          required
+        />
+      </label>
+
+      <button type="submit" style={{ padding: "0.75rem", fontSize: "1rem" }}>
+        Estimate Merge Time
+      </button>
     </form>
   );
 }

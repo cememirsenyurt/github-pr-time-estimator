@@ -1,0 +1,48 @@
+/* frontend/src/App.css */
+.App {
+  max-width: 480px;
+  margin: 4rem auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.pr-form div {
+  margin-bottom: 1rem;
+}
+.pr-form label {
+  display: block;
+  font-weight: bold;
+}
+.pr-form input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.pr-form button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #0366d6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pr-form button:hover {
+  background: #0356b6;
+}
+.result {
+  margin-top: 2rem;
+  text-align: center;
+  background: #f1f8ff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+.error {
+  margin-top: 1rem;
+  color: #b31d28;
+  text-align: center;
+}
