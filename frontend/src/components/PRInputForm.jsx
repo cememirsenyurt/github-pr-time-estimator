@@ -1,54 +1,58 @@
-// frontend/src/components/PRInputForm.jsx
 import { useState } from "react";
 
 export default function PRInputForm({ onSubmit }) {
-  const [owner, setOwner] = useState("facebook");
-  const [repo, setRepo] = useState("react");
-  const [prNumber, setPrNumber] = useState("32812");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [numLabels, setNumLabels] = useState(0);
+  const [isClosed, setIsClosed] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // make sure pr_number is an integer
-    onSubmit({
-      owner: owner.trim(),
-      repo: repo.trim(),
-      pr_number: parseInt(prNumber, 10),
-    });
+    onSubmit({ title, body, num_labels: numLabels, is_closed: isClosed });
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
+    <form onSubmit={handleSubmit} className="input-form">
       <label>
-        Owner
+        Title
         <input
           type="text"
-          value={owner}
-          onChange={(e) => setOwner(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           required
         />
       </label>
 
       <label>
-        Repo
-        <input
-          type="text"
-          value={repo}
-          onChange={(e) => setRepo(e.target.value)}
-          required
+        Body
+        <textarea
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          rows={4}
         />
       </label>
 
-      <label>
-        PR #
-        <input
-          type="number"
-          value={prNumber}
-          onChange={(e) => setPrNumber(e.target.value)}
-          required
-        />
-      </label>
+      <div className="row">
+        <label>
+          # Labels
+          <input
+            type="number"
+            value={numLabels}
+            onChange={(e) => setNumLabels(+e.target.value)}
+            min={0}
+          />
+        </label>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={isClosed}
+            onChange={(e) => setIsClosed(e.target.checked)}
+          />
+          Already Closed?
+        </label>
+      </div>
 
-      <button type="submit" style={{ padding: "0.75rem", fontSize: "1rem" }}>
+      <button type="submit" className="neon-button">
         Estimate Merge Time
       </button>
     </form>

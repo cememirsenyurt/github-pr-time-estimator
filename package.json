@@ -2,11 +2,18 @@
     "name": "github-pr-time-estimator",
     "private": true,
     "scripts": {
-        "start:backend": "cd backend/python-service && uvicorn app:app --reload --port 5000",
+        "start:backend": "cd backend/python-service && uvicorn app:app --reload --port 8080",
         "start:frontend": "cd frontend && npm run dev",
         "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
     },
     "devDependencies": {
         "concurrently": "^8.2.2"
+    },
+    "dependencies": {
+        "framer-motion": "^12.9.2",
+        "lucide-react": "^0.503.0",
+        "react-icons": "^5.5.0",
+        "react-tooltip": "^5.28.1",
+        "recharts": "^2.15.3"
     }
 }

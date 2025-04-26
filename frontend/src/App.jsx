@@ -1,55 +1,83 @@
 // frontend/src/App.jsx
 import { useState } from "react";
-import PRInputForm from "./components/PRInputForm";
-import PRResult from "./components/PRResult";
+import { FaGithub } from "react-icons/fa";
+import { SiMeta   } from "react-icons/si";
+import GHInputForm  from "./components/GHInputForm";
+import ManualPRForm from "./components/ManualPRForm";
+import PRResult     from "./components/PRResult";
 import "./App.css";
 
-function App() {
+export default function App() {
+  const [mode,    setMode]    = useState("existing"); // "existing" or "manual"
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
+  const [result,  setResult]  = useState(null);
+  const [error,   setError]   = useState("");
 
-  async function handlePredict(payload) {
+  const switchMode = (newMode) => {
+    setMode(newMode);
+    setResult(null);
+    setError("");
+  };
+
+  const handlePredict = async (payload, endpoint) => {
     setLoading(true);
     setResult(null);
     setError("");
-  
     try {
-      const res = await fetch("/predict", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-  
       if (!res.ok) {
-        // try to pull a JSON error, but fall back gracefully
         let msg = `Error ${res.status}`;
         try {
           const err = await res.json();
           msg = err.detail || err.message || msg;
-        } catch (_) { /* ignore JSON parse errors */ }
+        } catch {}
         throw new Error(msg);
       }
-  
-      const data = await res.json();
-      setResult(data);
+      setResult(await res.json());
     } catch (e) {
-      console.error("prediction error", e);
       setError(e.message);
     } finally {
       setLoading(false);
     }
-  }
-  
+  };
 
   return (
-    <div className="App" style={{ maxWidth: 600, margin: "2rem auto" }}>
-      <h1>GitHub PR Time-to-Merge Estimator</h1>
-      <PRInputForm onSubmit={handlePredict} />
-      {loading && <p>⏳ Fetching & predicting…</p>}
+    <div className="app-container">
+      <header className="app-header">
+        <FaGithub className="app-icon" />
+        <span className="app-title">Manual PR Time Estimator</span>
+        <SiMeta className="app-icon" />
+      </header>
+
+      <div className="tabs">
+        <button
+          className={`tab-button ${mode === "existing" ? "active" : ""}`}
+          onClick={() => switchMode("existing")}
+        >
+          Existing PR
+        </button>
+        <button
+          className={`tab-button ${mode === "manual" ? "active" : ""}`}
+          onClick={() => switchMode("manual")}
+        >
+          Manual PR
+        </button>
+      </div>
+
+      <div className="form-wrapper">
+        {mode === "existing" ? (
+          <GHInputForm onSubmit={(p) => handlePredict(p, "/predict")} />
+        ) : (
+          <ManualPRForm onSubmit={(p) => handlePredict(p, "/estimate")} />
+        )}
+      </div>
+
+      {loading && <p className="loading">⏳ Fetching & predicting…</p>}
       <PRResult result={result} error={error} />
     </div>
   );
 }
-
-export default App;
