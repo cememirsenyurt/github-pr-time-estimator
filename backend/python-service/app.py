@@ -1,59 +1,56 @@
+# backend/python-service/app.py
+
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+import joblib
+import requests
+import pandas as pd
 from dotenv import load_dotenv
-import joblib, requests
 
-# ─── point at the repo‐root .env ───────────────────────────────────────────────
+# ─── load environment & tokens ────────────────────────────────────
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 load_dotenv(os.path.join(ROOT, ".env"))
-
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 if not GITHUB_TOKEN:
     raise RuntimeError("GITHUB_TOKEN not set in .env")
 
+# ─── feature column names must match training ─────────────────────
+FEATURE_COLS = ["title_length", "body_length", "num_labels", "is_closed"]
+
+# ─── app & CORS setup ─────────────────────────────────────────────
 app = FastAPI(
     title="GitHub PR Time-to-Merge Estimator",
-    description="Given a GitHub repo & PR number, predicts how many hours until merge",
-    version="0.1",
+    version="0.2"
 )
-
-# ─── allow both localhost and 127.0.0.1 dev UIs ─────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-      "http://localhost:5173",    # Vite default
-      "http://127.0.0.1:5173",    # in case you browse via IP
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
     ],
     allow_methods=["*"],
     allow_headers=["*"],
     allow_credentials=True,
 )
 
+# ─── load your trained model ──────────────────────────────────────
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "pr_time_model.joblib")
 model = joblib.load(MODEL_PATH)
 
-class PredictRequest(BaseModel):
-    owner: str = Field(..., example="facebook")
-    repo: str = Field(..., example="react")
-    pr_number: int = Field(..., example=32812)
-
+# ─── shared response model ────────────────────────────────────────
 class PredictResponse(BaseModel):
     predicted_hours: float
 
-@app.get("/", tags=["health"])
-def read_root():
-    return {
-        "message": "✅ API up",
-        "endpoints": {
-            "predict": {"method": "POST", "path": "/predict"}
-        },
-    }
+# ─── live GitHub‐fetched PR endpoint ──────────────────────────────
+class PredictRequest(BaseModel):
+    owner: str
+    repo: str
+    pr_number: int
 
-@app.post("/predict", response_model=PredictResponse, tags=["prediction"])
-def predict(req: PredictRequest):
-    # 1) get the PR payload from GitHub
+@app.post("/predict", response_model=PredictResponse, tags=["github"])
+def predict_from_github(req: PredictRequest):
     url = f"https://api.github.com/repos/{req.owner}/{req.repo}/pulls/{req.pr_number}"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -65,16 +62,30 @@ def predict(req: PredictRequest):
     gh.raise_for_status()
     pr = gh.json()
 
-    # 2) extract the four numeric features
     tl = len(pr.get("title") or "")
-    bl = len(pr.get("body")  or "")
+    bl = len(pr.get("body") or "")
     nl = len(pr.get("labels") or [])
-    ic = 1 if (pr.get("state") or "").lower() == "closed" else 0
+    ic = 1 if pr.get("state", "").lower() == "closed" else 0
 
-    # 3) predict
-    try:
-        hours = model.predict([[tl, bl, nl, ic]])[0]
-    except Exception as e:
-        raise HTTPException(500, f"Model error: {e}")
+    # wrap in DataFrame so feature names match training
+    df = pd.DataFrame([[tl, bl, nl, ic]], columns=FEATURE_COLS)
+    hours = model.predict(df)[0]
+    return PredictResponse(predicted_hours=float(hours))
 
+# ─── manual input endpoint ────────────────────────────────────────
+class ManualRequest(BaseModel):
+    title: str = Field(..., example="Fix infinite-loop spinner")
+    body: str = Field("", example="This PR addresses …")
+    num_labels: int = Field(0, example=2)
+    is_closed: bool = Field(False, example=False)
+
+@app.post("/estimate", response_model=PredictResponse, tags=["manual"])
+def predict_manual(req: ManualRequest):
+    tl = len(req.title or "")
+    bl = len(req.body or "")
+    nl = req.num_labels
+    ic = 1 if req.is_closed else 0
+
+    df = pd.DataFrame([[tl, bl, nl, ic]], columns=FEATURE_COLS)
+    hours = model.predict(df)[0]
     return PredictResponse(predicted_hours=float(hours))

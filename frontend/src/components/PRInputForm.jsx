@@ -1,54 +1,67 @@
-// frontend/src/components/PRInputForm.jsx
 import { useState } from "react";
 
 export default function PRInputForm({ onSubmit }) {
-  const [owner, setOwner] = useState("facebook");
-  const [repo, setRepo] = useState("react");
-  const [prNumber, setPrNumber] = useState("32812");
+  const [title,     setTitle]     = useState("");
+  const [body,      setBody]      = useState("");
+  const [numLabels, setNumLabels] = useState(0);
+  const [isClosed,  setIsClosed]  = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // make sure pr_number is an integer
     onSubmit({
-      owner: owner.trim(),
-      repo: repo.trim(),
-      pr_number: parseInt(prNumber, 10),
+      title,
+      body,
+      num_labels: numLabels,
+      is_closed: isClosed,
     });
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
-      <label>
-        Owner
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
+      <div>
+        <label className="block mb-1">Title</label>
         <input
           type="text"
-          value={owner}
-          onChange={(e) => setOwner(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full border rounded p-2"
           required
         />
-      </label>
-
-      <label>
-        Repo
-        <input
-          type="text"
-          value={repo}
-          onChange={(e) => setRepo(e.target.value)}
-          required
+      </div>
+      <div>
+        <label className="block mb-1">Body</label>
+        <textarea
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          className="w-full border rounded p-2"
+          rows={4}
         />
-      </label>
-
-      <label>
-        PR #
-        <input
-          type="number"
-          value={prNumber}
-          onChange={(e) => setPrNumber(e.target.value)}
-          required
-        />
-      </label>
-
-      <button type="submit" style={{ padding: "0.75rem", fontSize: "1rem" }}>
+      </div>
+      <div className="flex space-x-4">
+        <div>
+          <label className="block mb-1"># Labels</label>
+          <input
+            type="number"
+            value={numLabels}
+            onChange={(e) => setNumLabels(+e.target.value)}
+            className="border rounded p-1 w-20"
+            min={0}
+          />
+        </div>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            checked={isClosed}
+            onChange={(e) => setIsClosed(e.target.checked)}
+            className="mr-2"
+          />
+          <label>Already Closed?</label>
+        </div>
+      </div>
+      <button
+        type="submit"
+        className="px-4 py-2 bg-blue-600 text-white rounded"
+      >
         Estimate Merge Time
       </button>
     </form>
