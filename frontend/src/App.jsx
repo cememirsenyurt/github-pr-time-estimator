@@ -1,15 +1,23 @@
 // frontend/src/App.jsx
 import { useState } from "react";
-import GHInputForm from "./components/GHInputForm";
+import { FaGithub } from "react-icons/fa";
+import { SiMeta   } from "react-icons/si";
+import GHInputForm  from "./components/GHInputForm";
 import ManualPRForm from "./components/ManualPRForm";
-import PRResult from "./components/PRResult";
+import PRResult     from "./components/PRResult";
 import "./App.css";
 
 export default function App() {
-  const [mode, setMode] = useState("existing"); // "existing" or "manual"
+  const [mode,    setMode]    = useState("existing"); // "existing" or "manual"
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
+  const [result,  setResult]  = useState(null);
+  const [error,   setError]   = useState("");
+
+  const switchMode = (newMode) => {
+    setMode(newMode);
+    setResult(null);
+    setError("");
+  };
 
   const handlePredict = async (payload, endpoint) => {
     setLoading(true);
@@ -26,11 +34,10 @@ export default function App() {
         try {
           const err = await res.json();
           msg = err.detail || err.message || msg;
-        } catch (_) {}
+        } catch {}
         throw new Error(msg);
       }
-      const data = await res.json();
-      setResult(data);
+      setResult(await res.json());
     } catch (e) {
       setError(e.message);
     } finally {
@@ -39,35 +46,37 @@ export default function App() {
   };
 
   return (
-    <div className="App" style={{ maxWidth: 600, margin: '2rem auto', padding: '1rem' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>
-        Manual PR Time Estimator
-      </h1>
+    <div className="app-container">
+      <header className="app-header">
+        <FaGithub className="app-icon" />
+        <span className="app-title">Manual PR Time Estimator</span>
+        <SiMeta className="app-icon" />
+      </header>
 
-      {/* mode toggle */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+      <div className="tabs">
         <button
-          className={mode === 'existing' ? 'active' : ''}
-          onClick={() => setMode('existing')}
+          className={`tab-button ${mode === "existing" ? "active" : ""}`}
+          onClick={() => switchMode("existing")}
         >
           Existing PR
         </button>
         <button
-          className={mode === 'manual' ? 'active' : ''}
-          onClick={() => setMode('manual')}
+          className={`tab-button ${mode === "manual" ? "active" : ""}`}
+          onClick={() => switchMode("manual")}
         >
           Manual PR
         </button>
       </div>
 
-      {/* conditional form */}
-      {mode === 'existing' ? (
-        <GHInputForm onSubmit={(p) => handlePredict(p, '/predict')} />
-      ) : (
-        <ManualPRForm onSubmit={(p) => handlePredict(p, '/estimate')} />
-      )}
+      <div className="form-wrapper">
+        {mode === "existing" ? (
+          <GHInputForm onSubmit={(p) => handlePredict(p, "/predict")} />
+        ) : (
+          <ManualPRForm onSubmit={(p) => handlePredict(p, "/estimate")} />
+        )}
+      </div>
 
-      {loading && <p>⏳ Fetching & predicting…</p>}
+      {loading && <p className="loading">⏳ Fetching & predicting…</p>}
       <PRResult result={result} error={error} />
     </div>
   );
