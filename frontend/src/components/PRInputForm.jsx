@@ -1,67 +1,58 @@
 import { useState } from "react";
 
 export default function PRInputForm({ onSubmit }) {
-  const [title,     setTitle]     = useState("");
-  const [body,      setBody]      = useState("");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const [numLabels, setNumLabels] = useState(0);
-  const [isClosed,  setIsClosed]  = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({
-      title,
-      body,
-      num_labels: numLabels,
-      is_closed: isClosed,
-    });
+    onSubmit({ title, body, num_labels: numLabels, is_closed: isClosed });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
-      <div>
-        <label className="block mb-1">Title</label>
+    <form onSubmit={handleSubmit} className="input-form">
+      <label>
+        Title
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border rounded p-2"
           required
         />
-      </div>
-      <div>
-        <label className="block mb-1">Body</label>
+      </label>
+
+      <label>
+        Body
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          className="w-full border rounded p-2"
           rows={4}
         />
-      </div>
-      <div className="flex space-x-4">
-        <div>
-          <label className="block mb-1"># Labels</label>
+      </label>
+
+      <div className="row">
+        <label>
+          # Labels
           <input
             type="number"
             value={numLabels}
             onChange={(e) => setNumLabels(+e.target.value)}
-            className="border rounded p-1 w-20"
             min={0}
           />
-        </div>
-        <div className="flex items-center">
+        </label>
+        <label className="checkbox-label">
           <input
             type="checkbox"
             checked={isClosed}
             onChange={(e) => setIsClosed(e.target.checked)}
-            className="mr-2"
           />
-          <label>Already Closed?</label>
-        </div>
+          Already Closed?
+        </label>
       </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-600 text-white rounded"
-      >
+
+      <button type="submit" className="neon-button">
         Estimate Merge Time
       </button>
     </form>
