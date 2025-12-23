@@ -1,8 +1,9 @@
 // frontend/src/components/GHInputForm.jsx
 import { useState } from "react";
+import { FaGithub, FaSearch } from "react-icons/fa";
 
 export default function GHInputForm({ onSubmit }) {
-  const [prNumber, setPrNumber] = useState(1);
+  const [prNumber, setPrNumber] = useState(32812);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,47 +15,60 @@ export default function GHInputForm({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
-      <h2 style={{ color: "#5ac8fa" }}>Lookup Existing PR</h2>
+    <div className="card">
+      <div className="card-header">
+        <FaGithub className="card-icon" style={{ color: "var(--primary)" }} />
+        <h3 className="card-title">Lookup Existing PR</h3>
+      </div>
       
-      <div>
-        <label className="block text-white font-semibold">Owner</label>
-        <input
-          type="text"
-          value="facebook"
-          readOnly
-          className="p-2 rounded bg-gray-700 text-white cursor-not-allowed"
-        />
-      </div>
+      <form onSubmit={handleSubmit} className="input-form">
+        <div className="form-group">
+          <label className="form-label">Repository Owner</label>
+          <input
+            type="text"
+            value="facebook"
+            readOnly
+            className="form-input"
+          />
+        </div>
 
-      <div>
-        <label className="block text-white font-semibold">Repo</label>
-        <input
-          type="text"
-          value="react"
-          readOnly
-          className="p-2 rounded bg-gray-700 text-white cursor-not-allowed"
-        />
-      </div>
+        <div className="form-group">
+          <label className="form-label">Repository Name</label>
+          <input
+            type="text"
+            value="react"
+            readOnly
+            className="form-input"
+          />
+        </div>
 
-      <div>
-        <label className="block text-white font-semibold">PR #</label>
-        <input
-          type="number"
-          min="1"
-          value={prNumber}
-          onChange={(e) => setPrNumber(e.target.value)}
-          required
-          className="p-2 rounded bg-gray-800 text-white focus:outline-none"
-        />
-      </div>
+        <div className="form-group">
+          <label className="form-label">Pull Request Number</label>
+          <input
+            type="number"
+            min="1"
+            value={prNumber}
+            onChange={(e) => setPrNumber(e.target.value)}
+            required
+            className="form-input"
+            placeholder="Enter PR number..."
+          />
+        </div>
 
-      <button
-        type="submit"
-        className="mt-4 py-2 bg-cyan-500 hover:bg-cyan-600 rounded text-white font-bold transition"
-      >
-        Fetch &amp; Predict
-      </button>
-    </form>
+        <button type="submit" className="btn btn-primary" style={{ marginTop: "0.5rem" }}>
+          <FaSearch />
+          <span>Fetch & Predict</span>
+        </button>
+      </form>
+      
+      <p style={{ 
+        marginTop: "1rem", 
+        fontSize: "0.8rem", 
+        color: "var(--text-muted)",
+        textAlign: "center"
+      }}>
+        Enter a PR number from facebook/react to analyze its merge time
+      </p>
+    </div>
   );
 }
