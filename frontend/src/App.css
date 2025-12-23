@@ -2,7 +2,7 @@
    APP CONTAINER
    =================================== */
 .app-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
   min-height: 100vh;
@@ -24,10 +24,21 @@
   backdrop-filter: blur(10px);
 }
 
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .app-icon {
   font-size: 2.5rem;
   color: var(--primary);
   filter: drop-shadow(0 0 10px var(--glow));
+}
+
+.meta-icon {
+  color: #0668E1;
+  font-size: 2rem;
 }
 
 .app-title {
@@ -37,6 +48,30 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ===================================
+   MAIN LAYOUT WITH SIDEBAR
+   =================================== */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.main-content-area {
+  flex: 1;
+}
+
+@media (max-width: 1000px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .example-prs-sidebar {
+    order: -1;
+  }
 }
 
 /* ===================================
@@ -484,4 +519,96 @@
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* ===================================
+   EXAMPLE PRS SIDEBAR / NOTEPAD
+   =================================== */
+.example-prs-sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.notepad {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.1) 0%, rgba(253, 230, 138, 0.05) 100%);
+  border: 1px solid rgba(253, 230, 138, 0.3);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notepad-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(253, 230, 138, 0.4);
+}
+
+.notepad-icon {
+  font-size: 1.25rem;
+}
+
+.notepad-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.notepad-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.pr-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pr-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(15, 15, 35, 0.4);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.pr-item:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateX(4px);
+}
+
+.pr-item:active {
+  transform: translateX(2px);
+}
+
+.pr-number {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+
+.pr-description {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.notepad-footer {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(253, 230, 138, 0.4);
+  text-align: center;
 }

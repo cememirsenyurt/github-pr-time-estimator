@@ -1,6 +1,6 @@
 // frontend/src/components/PRResult.jsx
 import React from "react";
-import { FaClock, FaRobot, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
+import { FaClock, FaRobot, FaCheckCircle, FaExclamationTriangle, FaChartArea } from "react-icons/fa";
 
 export default function PRResult({ result, error }) {
   if (error) {
@@ -19,6 +19,7 @@ export default function PRResult({ result, error }) {
     body = null,
     actual_hours = null,
     predicted_hours,
+    confidence = null,
     features_used = null,
   } = result;
 
@@ -77,6 +78,58 @@ export default function PRResult({ result, error }) {
           }}>
             {predicted_hours.toFixed(2)} hours total
           </div>
+          
+          {/* Confidence Interval */}
+          {confidence && confidence.lower_bound_hours != null && (
+            <div style={{
+              marginTop: "1rem",
+              padding: "0.75rem",
+              background: "rgba(15, 15, 35, 0.4)",
+              borderRadius: "0.5rem",
+              border: "1px solid rgba(99, 102, 241, 0.2)"
+            }}>
+              <div style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                gap: "0.5rem",
+                marginBottom: "0.5rem",
+                fontSize: "0.8rem",
+                color: "var(--text-muted)"
+              }}>
+                <FaChartArea style={{ fontSize: "0.9rem" }} />
+                <span>80% Confidence Range</span>
+              </div>
+              <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                fontSize: "0.9rem"
+              }}>
+                <span style={{ color: "var(--secondary)" }}>
+                  {formatHours(confidence.lower_bound_hours)}
+                </span>
+                <span style={{ color: "var(--text-muted)" }}>→</span>
+                <span style={{ color: "var(--warning)", fontWeight: "600" }}>
+                  {formatHours(confidence.median_hours)}
+                </span>
+                <span style={{ color: "var(--text-muted)" }}>→</span>
+                <span style={{ color: "var(--danger)" }}>
+                  {formatHours(confidence.upper_bound_hours)}
+                </span>
+              </div>
+              <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: "0.7rem",
+                color: "var(--text-muted)",
+                marginTop: "0.25rem"
+              }}>
+                <span>Fast</span>
+                <span>Likely</span>
+                <span>Slow</span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Actual Time Card (only shown for existing PRs) */}
@@ -186,7 +239,7 @@ export default function PRResult({ result, error }) {
             fontSize: "0.85rem",
             padding: "0.5rem"
           }}>
-            View extracted features
+            View extracted features ({Object.keys(features_used).length} features)
           </summary>
           <div className="card" style={{ marginTop: "0.5rem" }}>
             <div style={{ 
@@ -195,7 +248,9 @@ export default function PRResult({ result, error }) {
               gap: "0.75rem",
               fontSize: "0.85rem"
             }}>
-              {Object.entries(features_used).map(([key, value]) => (
+              {Object.entries(features_used)
+                .filter(([key]) => !key.startsWith('emb_'))  // Hide embedding features
+                .map(([key, value]) => (
                 <div key={key} style={{ 
                   display: "flex", 
                   justifyContent: "space-between",
@@ -212,6 +267,16 @@ export default function PRResult({ result, error }) {
                 </div>
               ))}
             </div>
+            {Object.keys(features_used).some(k => k.startsWith('emb_')) && (
+              <div style={{ 
+                marginTop: "0.75rem", 
+                fontSize: "0.8rem", 
+                color: "var(--text-muted)",
+                fontStyle: "italic"
+              }}>
+                + {Object.keys(features_used).filter(k => k.startsWith('emb_')).length} semantic embedding features
+              </div>
+            )}
           </div>
         </details>
       )}
