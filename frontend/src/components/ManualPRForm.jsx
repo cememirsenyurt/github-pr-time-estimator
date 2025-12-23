@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import { FaEdit, FaRocket } from "react-icons/fa";
 import LabelDropdown from "./LabelDropdown";
 
+const MIN_TEXTAREA_HEIGHT = 100;
+
 export default function ManualPRForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -14,7 +16,7 @@ export default function ManualPRForm({ onSubmit }) {
     const ta = textareaRef.current;
     if (!ta) return;
     ta.style.height = "auto";
-    ta.style.height = Math.max(100, ta.scrollHeight) + "px";
+    ta.style.height = Math.max(MIN_TEXTAREA_HEIGHT, ta.scrollHeight) + "px";
   }, [body]);
 
   const handleSubmit = (e) => {

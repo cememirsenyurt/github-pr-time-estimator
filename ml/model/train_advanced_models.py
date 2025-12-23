@@ -12,6 +12,7 @@ for GitHub PR merge time. It implements:
 
 import os
 import json
+import ast
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -92,7 +93,7 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     
     # Label features
     df['num_labels'] = df['labels'].apply(
-        lambda x: len(eval(x)) if isinstance(x, str) and x.startswith('[') else (len(x) if isinstance(x, list) else 0)
+        lambda x: len(ast.literal_eval(x)) if isinstance(x, str) and x.startswith('[') else (len(x) if isinstance(x, list) else 0)
     )
     
     # Binary features
@@ -220,6 +221,8 @@ def evaluate_model(model, X_train, X_test, y_train, y_test, model_name):
     test_pred = model.predict(X_test)
     
     # Metrics
+    # Note: MAPE can be very high when actual values are close to 0 (fast PRs)
+    # This is a known limitation of MAPE metric
     metrics = {
         'model_name': model_name,
         'cv_rmse': float(cv_rmse),

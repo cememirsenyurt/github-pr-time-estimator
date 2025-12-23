@@ -25,7 +25,7 @@ The system evaluates multiple regression models using cross-validation and test 
 | Elastic Net | 37.10 | 22.59 | 17.46 | 19.4% |
 | Gradient Boosting | 40.96 | 27.31 | 16.14 | -17.8% |
 
-**Best Model**: XGBoost with ~10.8 hours MAE on test set
+**Best Model**: XGBoost with approximately 10.8 hours MAE on test set
 
 ## 🔧 Feature Engineering
 

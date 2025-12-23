@@ -1,6 +1,6 @@
 {
   "best_model": "XGBoost",
-  "training_date": "2025-12-23T10:15:31.890676",
+  "training_date": "2025-12-23T10:28:51.972936",
   "num_samples": 91,
   "num_features": 16,
   "features": [
