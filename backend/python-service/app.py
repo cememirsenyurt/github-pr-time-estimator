@@ -39,6 +39,8 @@ app.add_middleware(
 )
 
 # ─── Label classification constants ──────────────────────────────────────────
+# Note: These constants are duplicated from ml/constants.py for deployment simplicity.
+# If you update these, also update the shared constants file.
 URGENCY_LABELS = {
     'bug', 'bugfix', 'hotfix', 'fix', 'critical', 'urgent', 'p0', 'p1', 
     'security', 'patch', 'regression', 'blocker', 'crash', 'error'
@@ -259,13 +261,18 @@ def predict_with_confidence(feature_vector: List[float]) -> Dict[str, float]:
             q90 = quantile_models['q90'].predict([feature_vector])[0]
             
             if use_log_transform:
-                result['lower_bound_hours'] = float(np.expm1(q10))
-                result['median_hours'] = float(np.expm1(q50))
-                result['upper_bound_hours'] = float(np.expm1(q90))
+                lower = float(np.expm1(q10))
+                median = float(np.expm1(q50))
+                upper = float(np.expm1(q90))
             else:
-                result['lower_bound_hours'] = float(q10)
-                result['median_hours'] = float(q50)
-                result['upper_bound_hours'] = float(q90)
+                lower = float(q10)
+                median = float(q50)
+                upper = float(q90)
+            
+            # Ensure logical ordering of confidence bounds
+            result['lower_bound_hours'] = min(lower, median, upper)
+            result['median_hours'] = sorted([lower, median, upper])[1]
+            result['upper_bound_hours'] = max(lower, median, upper)
         except Exception as e:
             print(f"[WARN] Could not compute quantiles: {e}")
     

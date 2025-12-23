@@ -16,6 +16,7 @@ for GitHub PR merge time. It implements:
 """
 
 import os
+import sys
 import json
 import ast
 import pandas as pd
@@ -40,6 +41,13 @@ from sklearn.pipeline import Pipeline
 import joblib
 import warnings
 warnings.filterwarnings('ignore')
+
+# Add parent directory to path to import shared constants
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from constants import (
+    URGENCY_LABELS, COMPLEXITY_LABELS, FAST_MERGE_LABELS, 
+    CORE_AUTHOR_TYPES, DEFAULT_EMBEDDING_MODEL
+)
 
 # Try to import optional dependencies
 try:
@@ -69,26 +77,8 @@ MODEL_PATH = os.path.join(BASE_DIR, 'pr_time_model.joblib')
 METRICS_PATH = os.path.join(BASE_DIR, 'model_metrics.json')
 COMPARISON_PATH = os.path.join(BASE_DIR, 'model_comparison.json')
 
-# Label classification for urgency/complexity signals
-URGENCY_LABELS = {
-    'bug', 'bugfix', 'hotfix', 'fix', 'critical', 'urgent', 'p0', 'p1', 
-    'security', 'patch', 'regression', 'blocker', 'crash', 'error'
-}
-COMPLEXITY_LABELS = {
-    'feature', 'enhancement', 'refactor', 'breaking-change', 'major',
-    'architecture', 'rfc', 'needs-discussion', 'wip', 'draft', 'large',
-    'complex', 'review-needed', 'documentation'
-}
-FAST_MERGE_LABELS = {
-    'trivial', 'typo', 'docs', 'documentation', 'chore', 'cleanup',
-    'minor', 'small', 'quick-fix', 'dependencies', 'dep', 'deps'
-}
-
-# Author association types (from GitHub API)
-CORE_AUTHOR_TYPES = {'OWNER', 'MEMBER', 'COLLABORATOR'}
-
-# Embedding model (lightweight for fast inference)
-EMBEDDING_MODEL_NAME = 'all-MiniLM-L6-v2'
+# Use embedding model name from constants
+EMBEDDING_MODEL_NAME = DEFAULT_EMBEDDING_MODEL
 
 
 def load_data(path=DATA_PATH):
@@ -517,6 +507,12 @@ def main():
     X = df[feature_cols].fillna(0)
     
     # Log-transform target variable for better distribution
+    # Rationale: PR merge times are heavily right-skewed (most PRs merge quickly,
+    # but some take weeks). Log transformation:
+    # 1. Reduces the impact of outliers (very long-running PRs)
+    # 2. Makes the distribution more normal, improving model performance
+    # 3. Ensures predictions are always positive after expm1 transformation
+    # At inference time, predictions are converted back via np.expm1()
     y_raw = df['time_to_merge_hours']
     y = np.log1p(y_raw)
     
