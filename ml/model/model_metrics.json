@@ -1,0 +1,61 @@
+{
+  "best_model": "XGBoost",
+  "training_date": "2025-12-23T10:28:51.972936",
+  "num_samples": 91,
+  "num_features": 16,
+  "features": [
+    "title_length",
+    "body_length",
+    "num_labels",
+    "is_closed",
+    "title_word_count",
+    "body_word_count",
+    "has_body",
+    "title_has_brackets",
+    "body_has_code",
+    "body_has_links",
+    "author_pr_count",
+    "body_length_log",
+    "hour_sin",
+    "hour_cos",
+    "day_sin",
+    "day_cos"
+  ],
+  "metrics": {
+    "model_name": "XGBoost",
+    "cv_rmse": 37.93162584548416,
+    "cv_rmse_std": 10.106575405649368,
+    "train_rmse": 0.02702602528143141,
+    "train_mae": 0.020385260353393584,
+    "train_r2": 0.9999993742316189,
+    "test_rmse": 16.022439449391374,
+    "test_mae": 10.79471401181486,
+    "test_r2": 0.5942523125881465,
+    "test_mape": 1498.1130599807022,
+    "feature_importance": {
+      "author_pr_count": 0.25203874707221985,
+      "day_sin": 0.13643047213554382,
+      "hour_sin": 0.09873582422733307,
+      "day_cos": 0.09151680767536163,
+      "num_labels": 0.0661352202296257,
+      "hour_cos": 0.06297927349805832,
+      "title_has_brackets": 0.05969840660691261,
+      "body_length": 0.050324320793151855,
+      "body_word_count": 0.041572339832782745,
+      "body_length_log": 0.04006262123584747,
+      "title_length": 0.03727806732058525,
+      "body_has_links": 0.03333260864019394,
+      "title_word_count": 0.02701280452311039,
+      "body_has_code": 0.002870897063985467,
+      "has_body": 1.1606326552282553e-05,
+      "is_closed": 0.0
+    }
+  },
+  "data_stats": {
+    "mean_merge_time_hours": 18.072274114774114,
+    "median_merge_time_hours": 0.8563888888888889,
+    "std_merge_time_hours": 32.72635768699264,
+    "min_merge_time_hours": 0.0822222222222222,
+    "max_merge_time_hours": 169.93972222222223
+  }
+}

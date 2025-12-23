@@ -1,6 +1,9 @@
 // frontend/src/components/ManualPRForm.jsx
 import { useState, useRef, useEffect } from "react";
+import { FaEdit, FaRocket } from "react-icons/fa";
 import LabelDropdown from "./LabelDropdown";
+
+const MIN_TEXTAREA_HEIGHT = 100;
 
 export default function ManualPRForm({ onSubmit }) {
   const [title, setTitle] = useState("");
@@ -13,7 +16,7 @@ export default function ManualPRForm({ onSubmit }) {
     const ta = textareaRef.current;
     if (!ta) return;
     ta.style.height = "auto";
-    ta.style.height = ta.scrollHeight + "px";
+    ta.style.height = Math.max(MIN_TEXTAREA_HEIGHT, ta.scrollHeight) + "px";
   }, [body]);
 
   const handleSubmit = (e) => {
@@ -22,58 +25,64 @@ export default function ManualPRForm({ onSubmit }) {
       title,
       body,
       num_labels: labels.length,
-      is_closed: false,        // always false for a new/manual PR
+      is_closed: false,
     });
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-2xl mx-auto p-6 flex flex-col space-y-10 bg-gradient-to-br from-gray-900 to-black rounded-3xl shadow-[0_0_30px_rgba(0,255,255,0.5)]"
-    >
-      <h2 className="text-4xl font-extrabold text-cyan-300 text-center">
-        Manual PR Entry
-      </h2>
-
-      <div className="flex flex-col">
-        <label className="mb-2 text-lg font-semibold text-white">Title</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          placeholder="Enter PR title…"
-          className="p-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-cyan-400/50 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all"
-        />
+    <div className="card">
+      <div className="card-header">
+        <FaEdit className="card-icon" style={{ color: "var(--secondary)" }} />
+        <h3 className="card-title">Manual PR Entry</h3>
       </div>
 
-      <div className="flex flex-col">
-        <label className="mb-2 text-lg font-semibold text-white">Description</label>
-        <textarea
-          ref={textareaRef}
-          rows={1}
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          placeholder="Describe what your PR does…"
-          className="p-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-cyan-400/50 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all overflow-hidden resize-none min-h-[3rem]"
-        />
-      </div>
+      <form onSubmit={handleSubmit} className="input-form">
+        <div className="form-group">
+          <label className="form-label">PR Title</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            placeholder="e.g., [Feature] Add new authentication flow"
+            className="form-input"
+          />
+        </div>
 
-      <div className="flex flex-col">
-        <label className="mb-2 text-lg font-semibold text-white">Labels</label>
-        <LabelDropdown
-          selected={labels}
-          onChange={setLabels}
-          placeholder="Select labels…"
-        />
-      </div>
+        <div className="form-group">
+          <label className="form-label">Description</label>
+          <textarea
+            ref={textareaRef}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            placeholder="Describe what your PR does, include any relevant context..."
+            className="form-input form-textarea"
+          />
+        </div>
 
-      <button
-        type="submit"
-        className="mt-6 py-4 bg-cyan-500 hover:bg-cyan-600 rounded-2xl text-xl font-bold text-black uppercase shadow-[0_0_20px_rgba(0,255,255,0.7)] transition-all"
-      >
-        Estimate Merge Time
-      </button>
-    </form>
+        <div className="form-group">
+          <label className="form-label">Labels</label>
+          <LabelDropdown
+            selected={labels}
+            onChange={setLabels}
+            placeholder="Select labels..."
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary" style={{ marginTop: "0.5rem" }}>
+          <FaRocket />
+          <span>Estimate Merge Time</span>
+        </button>
+      </form>
+
+      <p style={{ 
+        marginTop: "1rem", 
+        fontSize: "0.8rem", 
+        color: "var(--text-muted)",
+        textAlign: "center"
+      }}>
+        Enter PR details to get an estimated merge time prediction
+      </p>
+    </div>
   );
 }
